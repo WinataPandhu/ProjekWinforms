@@ -6,12 +6,12 @@ using System.Windows.Forms;
 
 namespace ProjekWinform
 {
-    public partial class Dashboard : Form
+    public partial class Dashboard_data : Form
     {
         private string username;
-        c_akun controller = new c_akun();
+        c_user controller = new c_user();
 
-        public Dashboard(string username)
+        public Dashboard_data(string username)
         {
             InitializeComponent();
             this.username = username;
@@ -23,17 +23,17 @@ namespace ProjekWinform
 
         public void LoadData()
         {
-            List<Akun> listAkun = controller.Read();
+            List<User> listUser = controller.Read();
             DgUser.DataSource = null;
-            DgUser.DataSource = listAkun;
+            DgUser.DataSource = listUser;
         }
 
         private void btnTambah_Click(object sender, EventArgs e)
         {
-            FormInputAkun form = new FormInputAkun();
+            FormInputUser form = new FormInputUser();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                string result = controller.Create(form.AkunData);
+                string result = controller.Create(form.UserData);
                 MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
             }
@@ -43,12 +43,12 @@ namespace ProjekWinform
         {
             if (DgUser.CurrentRow != null)
             {
-                Akun selectedAkun = (Akun)DgUser.CurrentRow.DataBoundItem;
-                FormInputAkun form = new FormInputAkun(selectedAkun);
+                User selectedUser = (User)DgUser.CurrentRow.DataBoundItem;
+                FormInputUser form = new FormInputUser(selectedUser);
 
                 if (form.ShowDialog() == DialogResult.OK)
                 {
-                    string result = controller.Update(form.AkunData);
+                    string result = controller.Update(form.UserData);
                     MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 LoadData();
@@ -63,16 +63,16 @@ namespace ProjekWinform
         {
             if (DgUser.CurrentRow != null)
             {
-                Akun selectedAkun = (Akun)DgUser.CurrentRow.DataBoundItem;
+                User selectedUser = (User)DgUser.CurrentRow.DataBoundItem;
                 DialogResult dr = MessageBox.Show(
-                    "Apakah Anda yakin ingin menghapus akun ini?",
+                    "Apakah Anda yakin ingin menghapus user ini?",
                     "Konfirmasi Hapus",
                     MessageBoxButtons.YesNo,
                     MessageBoxIcon.Question);
 
                 if (dr == DialogResult.Yes)
                 {
-                    string result = controller.Delete(selectedAkun.id_akun);
+                    string result = controller.Delete(selectedUser.id_user);
                     MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LoadData();
                 }
@@ -90,6 +90,6 @@ namespace ProjekWinform
             this.Hide();
         }
 
-        private void Dashboard_Load(object sender, EventArgs e) { }
+        private void Dashboard_data_Load(object sender, EventArgs e) { }
     }
 }

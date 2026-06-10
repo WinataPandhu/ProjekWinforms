@@ -24,7 +24,9 @@ namespace ProjekWinform
 
         private void BtnData_Click(object sender, EventArgs e)
         {
-
+            Dashboard_data dashboard = new Dashboard_data(username);
+            dashboard.Show();
+            this.Hide();
         }
 
         private void BtnKelola_Click(object sender, EventArgs e)

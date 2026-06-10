@@ -4,17 +4,11 @@ namespace ProjekWinform.Models
 {
     public class User
     {
-        public int id { get; set; }
-        public string nama { get; set; }
-        public string no_handphone { get; set; }
-        public string alamat { get; set; }
-
-        public User(int id, string nama, string no_handphone, string alamat)
-        {
-            this.id = id;
-            this.nama = nama;
-            this.no_handphone = no_handphone;
-            this.alamat = alamat;
-        }
+        public int id_user { get; set; }
+        public string nama_lengkap { get; set; } = string.Empty;
+        public string no_handphone { get; set; } = string.Empty;
+        public string alamat { get; set; } = string.Empty;
+        public string status { get; set; } = string.Empty;
+        public int id_akun { get; set; }
     }
 }

@@ -30,29 +30,32 @@
         {
             panel1 = new Panel();
             label3 = new Label();
-            textBoxAsal = new TextBox();
+            txtAlamat = new TextBox();
             label2 = new Label();
-            textBoxUmur = new TextBox();
+            txtNoHp = new TextBox();
             label1 = new Label();
-            textBoxNama = new TextBox();
+            txtNama = new TextBox();
             btnSimpan = new Button();
             btnBatal = new Button();
+            cmbStatus = new ComboBox();
+            cmbIdAkun = new ComboBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
-            panel1.BackgroundImage = Properties.Resources.card;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(cmbIdAkun);
+            panel1.Controls.Add(cmbStatus);
             panel1.Controls.Add(label3);
-            panel1.Controls.Add(textBoxAsal);
+            panel1.Controls.Add(txtAlamat);
             panel1.Controls.Add(label2);
-            panel1.Controls.Add(textBoxUmur);
+            panel1.Controls.Add(txtNoHp);
             panel1.Controls.Add(label1);
-            panel1.Controls.Add(textBoxNama);
+            panel1.Controls.Add(txtNama);
             panel1.Location = new Point(47, 31);
-            panel1.Margin = new Padding(2, 2, 2, 2);
+            panel1.Margin = new Padding(2);
             panel1.Name = "panel1";
             panel1.Size = new Size(381, 405);
             panel1.TabIndex = 0;
@@ -61,58 +64,58 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(34, 270);
+            label3.Location = new Point(34, 169);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(43, 23);
             label3.TabIndex = 5;
             label3.Text = "Asal";
             // 
-            // textBoxAsal
+            // txtAlamat
             // 
-            textBoxAsal.Location = new Point(34, 304);
-            textBoxAsal.Margin = new Padding(2, 2, 2, 2);
-            textBoxAsal.Name = "textBoxAsal";
-            textBoxAsal.Size = new Size(314, 27);
-            textBoxAsal.TabIndex = 4;
+            txtAlamat.Location = new Point(34, 194);
+            txtAlamat.Margin = new Padding(2);
+            txtAlamat.Name = "txtAlamat";
+            txtAlamat.Size = new Size(314, 27);
+            txtAlamat.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(34, 173);
+            label2.Location = new Point(36, 94);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(55, 23);
             label2.TabIndex = 3;
             label2.Text = "Umur";
             // 
-            // textBoxUmur
+            // txtNoHp
             // 
-            textBoxUmur.Location = new Point(34, 207);
-            textBoxUmur.Margin = new Padding(2, 2, 2, 2);
-            textBoxUmur.Name = "textBoxUmur";
-            textBoxUmur.Size = new Size(314, 27);
-            textBoxUmur.TabIndex = 2;
+            txtNoHp.Location = new Point(34, 129);
+            txtNoHp.Margin = new Padding(2);
+            txtNoHp.Name = "txtNoHp";
+            txtNoHp.Size = new Size(314, 27);
+            txtNoHp.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(34, 78);
+            label1.Location = new Point(34, 15);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(57, 23);
             label1.TabIndex = 1;
             label1.Text = "Nama";
             // 
-            // textBoxNama
+            // txtNama
             // 
-            textBoxNama.Location = new Point(34, 113);
-            textBoxNama.Margin = new Padding(2, 2, 2, 2);
-            textBoxNama.Name = "textBoxNama";
-            textBoxNama.Size = new Size(314, 27);
-            textBoxNama.TabIndex = 0;
+            txtNama.Location = new Point(34, 55);
+            txtNama.Margin = new Padding(2);
+            txtNama.Name = "txtNama";
+            txtNama.Size = new Size(314, 27);
+            txtNama.TabIndex = 0;
             // 
             // btnSimpan
             // 
@@ -120,7 +123,7 @@
             btnSimpan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSimpan.ForeColor = Color.White;
             btnSimpan.Location = new Point(530, 276);
-            btnSimpan.Margin = new Padding(2, 2, 2, 2);
+            btnSimpan.Margin = new Padding(2);
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(212, 66);
             btnSimpan.TabIndex = 2;
@@ -134,7 +137,7 @@
             btnBatal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBatal.ForeColor = Color.White;
             btnBatal.Location = new Point(531, 370);
-            btnBatal.Margin = new Padding(2, 2, 2, 2);
+            btnBatal.Margin = new Padding(2);
             btnBatal.Name = "btnBatal";
             btnBatal.Size = new Size(212, 66);
             btnBatal.TabIndex = 3;
@@ -142,17 +145,32 @@
             btnBatal.UseVisualStyleBackColor = false;
             btnBatal.Click += btnBatal_Click;
             // 
+            // cmbStatus
+            // 
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(48, 250);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(151, 28);
+            cmbStatus.TabIndex = 6;
+            // 
+            // cmbIdAkun
+            // 
+            cmbIdAkun.FormattingEnabled = true;
+            cmbIdAkun.Location = new Point(48, 325);
+            cmbIdAkun.Name = "cmbIdAkun";
+            cmbIdAkun.Size = new Size(151, 28);
+            cmbIdAkun.TabIndex = 7;
+            // 
             // FormInputUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.bg;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(831, 478);
             Controls.Add(btnBatal);
             Controls.Add(btnSimpan);
             Controls.Add(panel1);
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "FormInputUser";
             Text = "FormInputUser";
             panel1.ResumeLayout(false);
@@ -166,10 +184,12 @@
         private Button btnSimpan;
         private Button btnBatal;
         private Label label3;
-        private TextBox textBoxAsal;
+        private TextBox txtAlamat;
         private Label label2;
-        private TextBox textBoxUmur;
+        private TextBox txtNoHp;
         private Label label1;
-        private TextBox textBoxNama;
+        private TextBox txtNama;
+        private ComboBox cmbIdAkun;
+        private ComboBox cmbStatus;
     }
 }
