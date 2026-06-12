@@ -32,7 +32,7 @@
             pictureBox1 = new PictureBox();
             BtnPesanan = new Button();
             BtnStok = new Button();
-            label1 = new Label();
+            LabelKasir = new Label();
             BtnRiwayat = new Button();
             BtnExit = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -77,17 +77,17 @@
             BtnStok.UseVisualStyleBackColor = false;
             BtnStok.Click += BtnStok_Click;
             // 
-            // label1
+            // LabelKasir
             // 
-            label1.AutoSize = true;
-            label1.BackColor = Color.Transparent;
-            label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(29, 20);
-            label1.Name = "label1";
-            label1.Size = new Size(272, 46);
-            label1.TabIndex = 3;
-            label1.Text = "Selamat Datang";
+            LabelKasir.AutoSize = true;
+            LabelKasir.BackColor = Color.Transparent;
+            LabelKasir.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            LabelKasir.ForeColor = SystemColors.ButtonHighlight;
+            LabelKasir.Location = new Point(29, 20);
+            LabelKasir.Name = "LabelKasir";
+            LabelKasir.Size = new Size(272, 46);
+            LabelKasir.TabIndex = 3;
+            LabelKasir.Text = "Selamat Datang";
             // 
             // BtnRiwayat
             // 
@@ -117,6 +117,7 @@
             BtnExit.TabIndex = 5;
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = false;
+            BtnExit.Click += BtnExit_Click;
             // 
             // FormKasir
             // 
@@ -127,7 +128,7 @@
             ClientSize = new Size(714, 450);
             Controls.Add(BtnExit);
             Controls.Add(BtnRiwayat);
-            Controls.Add(label1);
+            Controls.Add(LabelKasir);
             Controls.Add(BtnStok);
             Controls.Add(BtnPesanan);
             Controls.Add(pictureBox1);
@@ -144,7 +145,7 @@
         private PictureBox pictureBox1;
         private Button BtnPesanan;
         private Button BtnStok;
-        private Label label1;
+        private Label LabelKasir;
         private Button BtnRiwayat;
         private Button BtnExit;
     }

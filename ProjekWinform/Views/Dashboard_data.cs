@@ -9,12 +9,14 @@ namespace ProjekWinform
     public partial class Dashboard_data : Form
     {
         private string username;
+        private int id_akun;
         c_user controller = new c_user();
 
-        public Dashboard_data(string username)
+        public Dashboard_data(string username, int id_akun)
         {
             InitializeComponent();
             this.username = username;
+            this.id_akun = id_akun;
             this.StartPosition = FormStartPosition.CenterScreen;
             DgUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoadData();
@@ -28,16 +30,6 @@ namespace ProjekWinform
             DgUser.DataSource = listUser;
         }
 
-        private void btnTambah_Click(object sender, EventArgs e)
-        {
-            FormInputUser form = new FormInputUser();
-            if (form.ShowDialog() == DialogResult.OK)
-            {
-                string result = controller.Create(form.UserData);
-                MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData();
-            }
-        }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -59,33 +51,10 @@ namespace ProjekWinform
             }
         }
 
-        private void btnHapus_Click(object sender, EventArgs e)
-        {
-            if (DgUser.CurrentRow != null)
-            {
-                User selectedUser = (User)DgUser.CurrentRow.DataBoundItem;
-                DialogResult dr = MessageBox.Show(
-                    "Apakah Anda yakin ingin menghapus user ini?",
-                    "Konfirmasi Hapus",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
-
-                if (dr == DialogResult.Yes)
-                {
-                    string result = controller.Delete(selectedUser.id_user);
-                    MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Pilih data yang ingin dihapus", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
 
         private void BtnKembali_Click(object sender, EventArgs e)
         {
-            FormAdmin formAdmin = new FormAdmin(username);
+            FormAdmin formAdmin = new FormAdmin(username, id_akun);
             formAdmin.Show();
             this.Hide();
         }

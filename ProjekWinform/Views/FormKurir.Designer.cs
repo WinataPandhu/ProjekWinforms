@@ -116,6 +116,7 @@
             BtnExit.TabIndex = 7;
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = false;
+            BtnExit.Click += BtnExit_Click;
             // 
             // FormKurir
             // 

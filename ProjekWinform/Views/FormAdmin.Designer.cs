@@ -132,6 +132,7 @@
             BtnExit.TabIndex = 6;
             BtnExit.Text = "Exit";
             BtnExit.UseVisualStyleBackColor = false;
+            BtnExit.Click += BtnExit_Click;
             // 
             // FormAdmin
             // 

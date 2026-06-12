@@ -1,14 +1,14 @@
-﻿using ProjekWinform.Models;
+﻿using ProjekWinform.Controllers;
+using ProjekWinform.Models;
 using System;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace ProjekWinform
 {
     public partial class FormInputAkun : Form
     {
-
         public Akun AkunData = new Akun();
+        private c_akun akunController = new c_akun();
 
         public FormInputAkun()
         {
@@ -17,14 +17,12 @@ namespace ProjekWinform
             IsiComboRole();
         }
 
-        // Constructor untuk Edit
         public FormInputAkun(Akun akun)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             IsiComboRole();
 
-            // Isi form dengan data yang dipilih
             txtUsername.Text = akun.username;
             txtPassword.Text = akun.password_akun;
             txtEmail.Text = akun.email;
@@ -56,19 +54,49 @@ namespace ProjekWinform
 
             RoleItem roleSelected = (RoleItem)cmbRole.SelectedItem;
 
-            if (AkunData == null)
-            {
-                // Mode Tambah
-                AkunData = new Akun();
-            }
-
             AkunData.username = txtUsername.Text;
             AkunData.password_akun = txtPassword.Text;
             AkunData.email = txtEmail.Text;
             AkunData.id_role = roleSelected.Id;
 
-            this.DialogResult = DialogResult.OK;
-            this.Close();
+            if (AkunData.id_akun == 0)
+            {
+                int newIdAkun = akunController.CreateAndGetId(AkunData);
+
+                if (newIdAkun == -1)
+                {
+                    MessageBox.Show("Username sudah digunakan, pilih username lain!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (newIdAkun == -2)
+                {
+                    MessageBox.Show("Email sudah digunakan, pilih email lain!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+                if (newIdAkun <= 0)
+                {
+                    MessageBox.Show("Gagal menyimpan akun!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                FormInputUser formUser = new FormInputUser(newIdAkun);
+                this.Hide();
+
+                if (formUser.ShowDialog() == DialogResult.OK)
+                {
+                    c_user userController = new c_user();
+                    string result = userController.Create(formUser.UserData);
+                    MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
         }
 
         private void btnBatal_Click(object sender, EventArgs e)
@@ -83,7 +111,6 @@ namespace ProjekWinform
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e) { }
     }
 
-    // Class helper untuk ComboBox role
     public class RoleItem
     {
         public int Id { get; set; }

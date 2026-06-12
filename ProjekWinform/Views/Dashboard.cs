@@ -9,12 +9,14 @@ namespace ProjekWinform
     public partial class Dashboard : Form
     {
         private string username;
+        private int id_akun;
         c_akun controller = new c_akun();
 
-        public Dashboard(string username)
+        public Dashboard(string username, int id_akun)
         {
             InitializeComponent();
             this.username = username;
+            this.id_akun = id_akun;
             this.StartPosition = FormStartPosition.CenterScreen;
             DgUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoadData();
@@ -33,8 +35,6 @@ namespace ProjekWinform
             FormInputAkun form = new FormInputAkun();
             if (form.ShowDialog() == DialogResult.OK)
             {
-                string result = controller.Create(form.AkunData);
-                MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadData();
             }
         }
@@ -85,7 +85,7 @@ namespace ProjekWinform
 
         private void BtnKembali_Click(object sender, EventArgs e)
         {
-            FormAdmin formAdmin = new FormAdmin(username);
+            FormAdmin formAdmin = new FormAdmin(username, id_akun);
             formAdmin.Show();
             this.Hide();
         }

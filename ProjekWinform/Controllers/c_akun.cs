@@ -1,6 +1,7 @@
 ﻿using Npgsql;
 using ProjekWinform.Helpers;
 using ProjekWinform.Models;
+using System;
 using System.Collections.Generic;
 
 namespace ProjekWinform.Controllers
@@ -38,8 +39,31 @@ namespace ProjekWinform.Controllers
         {
             using (var conn = connectDB.GetConn())
             {
-                string query = "INSERT INTO akun (username, password_akun, email, id_role) VALUES (@username, @password, @email, @id_role)";
+                string cek = "SELECT COUNT(*) FROM akun WHERE username = @username";
+                using (var cmdCek = new NpgsqlCommand(cek, conn))
+                {
+                    cmdCek.Parameters.AddWithValue("username", akun.username);
+                    int jumlah = Convert.ToInt32(cmdCek.ExecuteScalar());
 
+                    if (jumlah > 0)
+                    {
+                        return "Username sudah digunakan, pilih username lain!";
+                    }
+                }
+
+                string cekEmail = "SELECT COUNT(*) FROM akun WHERE email = @email";
+                using (var cmdEmail = new NpgsqlCommand(cekEmail, conn))
+                {
+                    cmdEmail.Parameters.AddWithValue("email", akun.email);
+                    int jumlah = Convert.ToInt32(cmdEmail.ExecuteScalar());
+
+                    if (jumlah > 0)
+                    {
+                        return "Email sudah digunakan, pilih email lain!";
+                    }
+                }
+
+                string query = "INSERT INTO akun (username, password_akun, email, id_role) VALUES (@username, @password, @email, @id_role)";
                 using (var cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("username", akun.username);
@@ -50,6 +74,50 @@ namespace ProjekWinform.Controllers
                 }
             }
             return "Akun berhasil ditambahkan!";
+        }
+
+
+        public int CreateAndGetId(Akun akun)
+        {
+            using (var conn = connectDB.GetConn())
+            {
+                string cekUsername = "SELECT COUNT(*) FROM akun WHERE username = @username";
+                using (var cmdCek = new NpgsqlCommand(cekUsername, conn))
+                {
+                    cmdCek.Parameters.AddWithValue("username", akun.username);
+                    int jumlah = Convert.ToInt32(cmdCek.ExecuteScalar());
+                    if (jumlah > 0)
+                    {
+                        return -1;
+                    }
+                }
+
+                string cekEmail = "SELECT COUNT(*) FROM akun WHERE email = @email";
+                using (var cmdEmail = new NpgsqlCommand(cekEmail, conn))
+                {
+                    cmdEmail.Parameters.AddWithValue("email", akun.email);
+                    int jumlah = Convert.ToInt32(cmdEmail.ExecuteScalar());
+                    if (jumlah > 0)
+                    {
+                        return -2;
+                    }
+                }
+
+                string query = @"INSERT INTO akun (username, password_akun, email, id_role) 
+                         VALUES (@username, @password, @email, @id_role) 
+                         RETURNING id_akun";
+
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("username", akun.username);
+                    cmd.Parameters.AddWithValue("password", akun.password_akun);
+                    cmd.Parameters.AddWithValue("email", akun.email);
+                    cmd.Parameters.AddWithValue("id_role", akun.id_role);
+
+                    object result = cmd.ExecuteScalar();
+                    return result != null ? Convert.ToInt32(result) : 0;
+                }
+            }
         }
 
         public string Update(Akun akun)
@@ -85,5 +153,7 @@ namespace ProjekWinform.Controllers
             }
             return "Akun berhasil dihapus!";
         }
+
+
     }
 }

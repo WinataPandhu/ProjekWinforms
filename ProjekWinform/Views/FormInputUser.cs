@@ -1,5 +1,7 @@
-﻿using ProjekWinform.Models;
+﻿using ProjekWinform.Controllers;
+using ProjekWinform.Models;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ProjekWinform
@@ -26,6 +28,12 @@ namespace ProjekWinform
             cmbIdAkun.Text = user.id_akun.ToString();
         }
 
+        public FormInputUser(int idAkun) : this()
+        {
+            cmbIdAkun.Text = idAkun.ToString();
+            cmbIdAkun.Enabled = false;
+        }
+
         private void IsiComboStatus()
         {
             cmbStatus.Items.Clear();
@@ -35,12 +43,14 @@ namespace ProjekWinform
 
         private void IsiComboAkun()
         {
-            // isi manual sesuai data akun yang ada
             cmbIdAkun.Items.Clear();
-            cmbIdAkun.Items.Add("1");
-            cmbIdAkun.Items.Add("2");
-            cmbIdAkun.Items.Add("3");
-            cmbIdAkun.Items.Add("4");
+            c_akun akunController = new c_akun();
+            List<Akun> listAkun = akunController.Read();
+
+            foreach (Akun akun in listAkun)
+            {
+                cmbIdAkun.Items.Add(akun.id_akun.ToString());
+            }
         }
 
         private void btnSimpan_Click(object sender, EventArgs e)
@@ -49,7 +59,7 @@ namespace ProjekWinform
                 string.IsNullOrWhiteSpace(txtNoHp.Text) ||
                 string.IsNullOrWhiteSpace(txtAlamat.Text) ||
                 cmbStatus.SelectedItem == null ||
-                cmbIdAkun.SelectedItem == null)
+                string.IsNullOrWhiteSpace(cmbIdAkun.Text))
             {
                 MessageBox.Show("Semua data harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -61,7 +71,7 @@ namespace ProjekWinform
             UserData.no_handphone = txtNoHp.Text;
             UserData.alamat = txtAlamat.Text;
             UserData.status = cmbStatus.SelectedItem.ToString();
-            UserData.id_akun = Convert.ToInt32(cmbIdAkun.SelectedItem);
+            UserData.id_akun = Convert.ToInt32(cmbIdAkun.Text);
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -72,5 +82,7 @@ namespace ProjekWinform
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
+
+        private void label4_Click(object sender, EventArgs e) { }
     }
 }

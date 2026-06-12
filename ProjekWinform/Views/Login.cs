@@ -1,5 +1,7 @@
 using Npgsql;
 using ProjekWinform.Helpers;
+using System;
+using System.Windows.Forms;
 
 namespace ProjekWinform
 {
@@ -27,7 +29,7 @@ namespace ProjekWinform
                 using (var conn = connectDB.GetConn())
                 {
                     string query = @"
-                        SELECT r.nama_role 
+                        SELECT a.id_akun, r.nama_role 
                         FROM akun a
                         JOIN roles r ON a.id_role = r.id_role
                         WHERE a.username = @username 
@@ -38,40 +40,42 @@ namespace ProjekWinform
                         cmd.Parameters.AddWithValue("username", usernameInput);
                         cmd.Parameters.AddWithValue("password", passwordInput);
 
-                        var result = cmd.ExecuteScalar();
-
-                        if (result != null)
+                        using (var reader = cmd.ExecuteReader())
                         {
-                            string role = result.ToString();
+                            if (reader.Read())
+                            {
+                                string role = reader["nama_role"].ToString();
+                                int id_akun = Convert.ToInt32(reader["id_akun"]);
 
-                            MessageBox.Show("Login Berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Login Berhasil!", "Sukses", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                            if (role == "Admin")
-                            {
-                                FormAdmin formAdmin = new FormAdmin(usernameInput);
-                                formAdmin.Show();
-                                this.Hide();
-                            }
-                            else if (role == "Kasir")
-                            {
-                                FormKasir formKasir = new FormKasir();
-                                formKasir.Show();
-                                this.Hide();
-                            }
-                            else if (role == "Kurir")
-                            {
-                                FormKurir formKurir = new FormKurir();
-                                formKurir.Show();
-                                this.Hide();
+                                if (role == "Admin")
+                                {
+                                    FormAdmin formAdmin = new FormAdmin(usernameInput, id_akun);
+                                    formAdmin.Show();
+                                    this.Hide();
+                                }
+                                else if (role == "Kasir")
+                                {
+                                    FormKasir formKasir = new FormKasir(usernameInput);
+                                    formKasir.Show();
+                                    this.Hide();
+                                }
+                                else if (role == "Kurir")
+                                {
+                                    FormKurir formKurir = new FormKurir();
+                                    formKurir.Show();
+                                    this.Hide();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Role tidak dikenali!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                }
                             }
                             else
                             {
-                                MessageBox.Show("Role tidak dikenali!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Username atau Password salah!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                        }
-                        else
-                        {
-                            MessageBox.Show("Username atau Password salah!", "Gagal", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -82,14 +86,8 @@ namespace ProjekWinform
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+        private void Form1_Load(object sender, EventArgs e) { }
 
-        }
-
-        private void TbUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void TbUsername_TextChanged(object sender, EventArgs e) { }
     }
 }

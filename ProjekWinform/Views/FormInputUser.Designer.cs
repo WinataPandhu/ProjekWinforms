@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
+            label5 = new Label();
+            label4 = new Label();
+            cmbIdAkun = new ComboBox();
+            cmbStatus = new ComboBox();
             label3 = new Label();
             txtAlamat = new TextBox();
             label2 = new Label();
@@ -37,8 +41,6 @@
             txtNama = new TextBox();
             btnSimpan = new Button();
             btnBatal = new Button();
-            cmbStatus = new ComboBox();
-            cmbIdAkun = new ComboBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -46,6 +48,8 @@
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label4);
             panel1.Controls.Add(cmbIdAkun);
             panel1.Controls.Add(cmbStatus);
             panel1.Controls.Add(label3);
@@ -60,6 +64,45 @@
             panel1.Size = new Size(381, 405);
             panel1.TabIndex = 0;
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.Location = new Point(36, 313);
+            label5.Margin = new Padding(2, 0, 2, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(75, 23);
+            label5.TabIndex = 9;
+            label5.Text = "ID Akun";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label4.Location = new Point(36, 245);
+            label4.Margin = new Padding(2, 0, 2, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(60, 23);
+            label4.TabIndex = 8;
+            label4.Text = "Status";
+            label4.Click += label4_Click;
+            // 
+            // cmbIdAkun
+            // 
+            cmbIdAkun.FormattingEnabled = true;
+            cmbIdAkun.Location = new Point(34, 339);
+            cmbIdAkun.Name = "cmbIdAkun";
+            cmbIdAkun.Size = new Size(151, 28);
+            cmbIdAkun.TabIndex = 7;
+            // 
+            // cmbStatus
+            // 
+            cmbStatus.FormattingEnabled = true;
+            cmbStatus.Location = new Point(36, 268);
+            cmbStatus.Name = "cmbStatus";
+            cmbStatus.Size = new Size(151, 28);
+            cmbStatus.TabIndex = 6;
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -67,9 +110,9 @@
             label3.Location = new Point(34, 169);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
-            label3.Size = new Size(43, 23);
+            label3.Size = new Size(68, 23);
             label3.TabIndex = 5;
-            label3.Text = "Asal";
+            label3.Text = "Alamat";
             // 
             // txtAlamat
             // 
@@ -83,16 +126,16 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(36, 94);
+            label2.Location = new Point(34, 99);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
-            label2.Size = new Size(55, 23);
+            label2.Size = new Size(131, 23);
             label2.TabIndex = 3;
-            label2.Text = "Umur";
+            label2.Text = "No Handphone";
             // 
             // txtNoHp
             // 
-            txtNoHp.Location = new Point(34, 129);
+            txtNoHp.Location = new Point(34, 124);
             txtNoHp.Margin = new Padding(2);
             txtNoHp.Name = "txtNoHp";
             txtNoHp.Size = new Size(314, 27);
@@ -102,7 +145,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(34, 15);
+            label1.Location = new Point(34, 25);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(57, 23);
@@ -111,7 +154,7 @@
             // 
             // txtNama
             // 
-            txtNama.Location = new Point(34, 55);
+            txtNama.Location = new Point(34, 50);
             txtNama.Margin = new Padding(2);
             txtNama.Name = "txtNama";
             txtNama.Size = new Size(314, 27);
@@ -145,22 +188,6 @@
             btnBatal.UseVisualStyleBackColor = false;
             btnBatal.Click += btnBatal_Click;
             // 
-            // cmbStatus
-            // 
-            cmbStatus.FormattingEnabled = true;
-            cmbStatus.Location = new Point(48, 250);
-            cmbStatus.Name = "cmbStatus";
-            cmbStatus.Size = new Size(151, 28);
-            cmbStatus.TabIndex = 6;
-            // 
-            // cmbIdAkun
-            // 
-            cmbIdAkun.FormattingEnabled = true;
-            cmbIdAkun.Location = new Point(48, 325);
-            cmbIdAkun.Name = "cmbIdAkun";
-            cmbIdAkun.Size = new Size(151, 28);
-            cmbIdAkun.TabIndex = 7;
-            // 
             // FormInputUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -191,5 +218,7 @@
         private TextBox txtNama;
         private ComboBox cmbIdAkun;
         private ComboBox cmbStatus;
+        private Label label4;
+        private Label label5;
     }
 }

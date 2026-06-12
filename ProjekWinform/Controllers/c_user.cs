@@ -29,7 +29,7 @@ namespace ProjekWinform.Controllers
             string validation = Validation(user);
             if (validation != null) return validation;
             context.Create(user);
-            return "Data berhasil ditambahkan";
+            return "Data user berhasil ditambahkan!";
         }
 
         public string Update(User user)

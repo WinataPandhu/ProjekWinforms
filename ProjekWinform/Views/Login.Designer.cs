@@ -35,6 +35,8 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnLogin
@@ -42,7 +44,7 @@
             btnLogin.BackColor = Color.Yellow;
             btnLogin.Font = new Font("Segoe UI", 11F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnLogin.ForeColor = Color.Black;
-            btnLogin.Location = new Point(71, 319);
+            btnLogin.Location = new Point(377, 363);
             btnLogin.Margin = new Padding(2);
             btnLogin.Name = "btnLogin";
             btnLogin.Size = new Size(155, 48);
@@ -53,7 +55,7 @@
             // 
             // TbPassword
             // 
-            TbPassword.Location = new Point(71, 268);
+            TbPassword.Location = new Point(313, 285);
             TbPassword.Margin = new Padding(2);
             TbPassword.Name = "TbPassword";
             TbPassword.Size = new Size(242, 27);
@@ -61,7 +63,7 @@
             // 
             // TbUsername
             // 
-            TbUsername.Location = new Point(71, 185);
+            TbUsername.Location = new Point(313, 172);
             TbUsername.Margin = new Padding(2);
             TbUsername.Name = "TbUsername";
             TbUsername.Size = new Size(242, 27);
@@ -72,7 +74,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label3.Location = new Point(71, 227);
+            label3.Location = new Point(313, 242);
             label3.Margin = new Padding(2, 0, 2, 0);
             label3.Name = "label3";
             label3.Size = new Size(85, 23);
@@ -83,7 +85,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
-            label2.Location = new Point(73, 146);
+            label2.Location = new Point(313, 134);
             label2.Margin = new Padding(2, 0, 2, 0);
             label2.Name = "label2";
             label2.Size = new Size(89, 23);
@@ -95,31 +97,41 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.ForeColor = SystemColors.ControlText;
-            label1.Location = new Point(114, 63);
+            label1.Location = new Point(360, 80);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
             label1.Size = new Size(199, 28);
             label1.TabIndex = 2;
             label1.Text = "Toko Alat Pertanian";
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Location = new Point(289, 60);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(347, 386);
+            pictureBox1.TabIndex = 8;
+            pictureBox1.TabStop = false;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.None;
-            ClientSize = new Size(413, 497);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(957, 497);
             Controls.Add(label1);
             Controls.Add(btnLogin);
             Controls.Add(TbPassword);
             Controls.Add(TbUsername);
             Controls.Add(label3);
             Controls.Add(label2);
+            Controls.Add(pictureBox1);
             DoubleBuffered = true;
             Margin = new Padding(2);
             Name = "Form1";
             Text = "Login";
             Load += Form1_Load;
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -131,5 +143,6 @@
         private Label label2;
         private Label label1;
         private Button btnLogin;
+        private PictureBox pictureBox1;
     }
 }
