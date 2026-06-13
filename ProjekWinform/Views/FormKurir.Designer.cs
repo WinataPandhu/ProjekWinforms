@@ -32,9 +32,8 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             BtnAntar = new Button();
-            BtnRiwayatKirim = new Button();
-            BtnStatus = new Button();
             BtnExit = new Button();
+            BtnRiwayat = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -67,41 +66,11 @@
             BtnAntar.ForeColor = SystemColors.ButtonHighlight;
             BtnAntar.Location = new Point(251, 110);
             BtnAntar.Name = "BtnAntar";
-            BtnAntar.Size = new Size(260, 190);
+            BtnAntar.Size = new Size(260, 266);
             BtnAntar.TabIndex = 2;
             BtnAntar.Text = "Antar Pesanan";
             BtnAntar.UseVisualStyleBackColor = false;
             BtnAntar.Click += BtnAntar_Click;
-            // 
-            // BtnRiwayatKirim
-            // 
-            BtnRiwayatKirim.BackColor = Color.Gold;
-            BtnRiwayatKirim.BackgroundImage = (Image)resources.GetObject("BtnRiwayatKirim.BackgroundImage");
-            BtnRiwayatKirim.BackgroundImageLayout = ImageLayout.Stretch;
-            BtnRiwayatKirim.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnRiwayatKirim.ForeColor = SystemColors.ButtonHighlight;
-            BtnRiwayatKirim.Location = new Point(251, 299);
-            BtnRiwayatKirim.Name = "BtnRiwayatKirim";
-            BtnRiwayatKirim.Size = new Size(503, 74);
-            BtnRiwayatKirim.TabIndex = 4;
-            BtnRiwayatKirim.Text = "Riwayat Pengiriman";
-            BtnRiwayatKirim.UseVisualStyleBackColor = false;
-            BtnRiwayatKirim.Click += BtnRiwayatKirim_Click;
-            // 
-            // BtnStatus
-            // 
-            BtnStatus.BackColor = Color.FromArgb(192, 192, 0);
-            BtnStatus.BackgroundImage = (Image)resources.GetObject("BtnStatus.BackgroundImage");
-            BtnStatus.BackgroundImageLayout = ImageLayout.Stretch;
-            BtnStatus.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            BtnStatus.ForeColor = SystemColors.ButtonHighlight;
-            BtnStatus.Location = new Point(507, 110);
-            BtnStatus.Name = "BtnStatus";
-            BtnStatus.Size = new Size(247, 190);
-            BtnStatus.TabIndex = 6;
-            BtnStatus.Text = "Status Pesanan";
-            BtnStatus.UseVisualStyleBackColor = false;
-            BtnStatus.Click += BtnStatus_Click;
             // 
             // BtnExit
             // 
@@ -118,6 +87,21 @@
             BtnExit.UseVisualStyleBackColor = false;
             BtnExit.Click += BtnExit_Click;
             // 
+            // BtnRiwayat
+            // 
+            BtnRiwayat.BackColor = Color.FromArgb(192, 192, 0);
+            BtnRiwayat.BackgroundImage = (Image)resources.GetObject("BtnRiwayat.BackgroundImage");
+            BtnRiwayat.BackgroundImageLayout = ImageLayout.Stretch;
+            BtnRiwayat.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnRiwayat.ForeColor = SystemColors.ButtonHighlight;
+            BtnRiwayat.Location = new Point(507, 110);
+            BtnRiwayat.Name = "BtnRiwayat";
+            BtnRiwayat.Size = new Size(247, 266);
+            BtnRiwayat.TabIndex = 6;
+            BtnRiwayat.Text = "Riwayat Pengiriman";
+            BtnRiwayat.UseVisualStyleBackColor = false;
+            BtnRiwayat.Click += BtnRiwayat_Click;
+            // 
             // FormKurir
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -126,8 +110,7 @@
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(800, 450);
             Controls.Add(BtnExit);
-            Controls.Add(BtnStatus);
-            Controls.Add(BtnRiwayatKirim);
+            Controls.Add(BtnRiwayat);
             Controls.Add(BtnAntar);
             Controls.Add(pictureBox1);
             Controls.Add(label1);
@@ -143,8 +126,7 @@
         private Label label1;
         private PictureBox pictureBox1;
         private Button BtnAntar;
-        private Button BtnRiwayatKirim;
-        private Button BtnStatus;
         private Button BtnExit;
+        private Button BtnRiwayat;
     }
 }

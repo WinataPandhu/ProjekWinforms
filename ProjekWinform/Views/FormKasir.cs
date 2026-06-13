@@ -39,12 +39,14 @@ namespace ProjekWinform
 
         private void BtnRiwayat_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
-
+            Form1 login = new Form1();
+            login.Show();
+            this.Hide();
         }
     }
 }

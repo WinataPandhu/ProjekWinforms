@@ -5,11 +5,14 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace ProjekWinform
 {
     public partial class FormKurir : Form
     {
+        private string username;
+
         public FormKurir()
         {
             InitializeComponent();
@@ -17,18 +20,18 @@ namespace ProjekWinform
 
         private void BtnAntar_Click(object sender, EventArgs e)
         {
-
+            FormPengiriman kirim = new FormPengiriman();
+            kirim.Show();
+            this.Hide();
         }
 
-        private void BtnStatus_Click(object sender, EventArgs e)
+        private void BtnRiwayat_Click(object sender, EventArgs e)
         {
-
+            FormRiwayatKurir riwayat = new FormRiwayatKurir();
+            riwayat.Show();
+            this.Hide();
         }
 
-        private void BtnRiwayatKirim_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
