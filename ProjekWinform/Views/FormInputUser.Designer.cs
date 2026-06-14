@@ -31,7 +31,6 @@
             panel1 = new Panel();
             label5 = new Label();
             label4 = new Label();
-            cmbIdAkun = new ComboBox();
             cmbStatus = new ComboBox();
             label3 = new Label();
             txtAlamat = new TextBox();
@@ -41,6 +40,7 @@
             txtNama = new TextBox();
             btnSimpan = new Button();
             btnBatal = new Button();
+            cmbIdAkun = new ComboBox();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -48,9 +48,9 @@
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(cmbIdAkun);
             panel1.Controls.Add(label5);
             panel1.Controls.Add(label4);
-            panel1.Controls.Add(cmbIdAkun);
             panel1.Controls.Add(cmbStatus);
             panel1.Controls.Add(label3);
             panel1.Controls.Add(txtAlamat);
@@ -86,14 +86,6 @@
             label4.TabIndex = 8;
             label4.Text = "Status";
             label4.Click += label4_Click;
-            // 
-            // cmbIdAkun
-            // 
-            cmbIdAkun.FormattingEnabled = true;
-            cmbIdAkun.Location = new Point(34, 339);
-            cmbIdAkun.Name = "cmbIdAkun";
-            cmbIdAkun.Size = new Size(151, 28);
-            cmbIdAkun.TabIndex = 7;
             // 
             // cmbStatus
             // 
@@ -188,6 +180,14 @@
             btnBatal.UseVisualStyleBackColor = false;
             btnBatal.Click += btnBatal_Click;
             // 
+            // cmbIdAkun
+            // 
+            cmbIdAkun.FormattingEnabled = true;
+            cmbIdAkun.Location = new Point(36, 339);
+            cmbIdAkun.Name = "cmbIdAkun";
+            cmbIdAkun.Size = new Size(151, 28);
+            cmbIdAkun.TabIndex = 10;
+            // 
             // FormInputUser
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -216,9 +216,9 @@
         private TextBox txtNoHp;
         private Label label1;
         private TextBox txtNama;
-        private ComboBox cmbIdAkun;
         private ComboBox cmbStatus;
         private Label label4;
         private Label label5;
+        private ComboBox cmbIdAkun;
     }
 }

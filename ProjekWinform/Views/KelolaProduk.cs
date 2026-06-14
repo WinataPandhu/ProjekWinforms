@@ -61,25 +61,6 @@ namespace ProjekWinform
             }
         }
 
-        private void BtnHarga_Click(object sender, EventArgs e)
-        {
-            if (DgProduk.CurrentRow != null)
-            {
-                AlatPertanian selectedAlat = (AlatPertanian)DgProduk.CurrentRow.DataBoundItem;
-                FormHargaBaru form = new FormHargaBaru(selectedAlat);
-
-                if (form.ShowDialog() == DialogResult.OK)
-                {
-                    string result = controller.UpdateHarga(form.AlatData);
-                    MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Pilih produk yang ingin diubah harganya!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-        }
 
         private void BtnExit_Click(object sender, EventArgs e)
         {
@@ -89,5 +70,25 @@ namespace ProjekWinform
         }
 
         private void DgProduk_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            if (DgProduk.CurrentRow != null)
+            {
+                AlatPertanian selectedAlat = (AlatPertanian)DgProduk.CurrentRow.DataBoundItem;
+                FormInputAlat form = new FormInputAlat(selectedAlat);
+
+                if (form.ShowDialog() == DialogResult.OK)
+                {
+                    string result = controller.Update(form.AlatData);
+                    MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Pilih produk yang ingin diedit!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
     }
 }

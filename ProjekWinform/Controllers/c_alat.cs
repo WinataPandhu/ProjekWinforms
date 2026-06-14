@@ -74,17 +74,10 @@ namespace ProjekWinform.Controllers
         {
             using (var conn = connectDB.GetConn())
             {
-                string queryUpdate = "UPDATE alat_pertanian SET stok = stok + @jumlah WHERE id_alat = @id_alat";
-                using (var cmd = new NpgsqlCommand(queryUpdate, conn))
-                {
-                    cmd.Parameters.AddWithValue("jumlah", jumlah);
-                    cmd.Parameters.AddWithValue("id_alat", alat.id_alat);
-                    cmd.ExecuteNonQuery();
-                }
-
                 string queryHistori = @"INSERT INTO histori_restok 
             (harga_beli, stok_dibeli, tanggal_pembelian, id_user, id_alat) 
             VALUES (@harga_beli, @stok_dibeli, @tanggal, @id_user, @id_alat)";
+
                 using (var cmd = new NpgsqlCommand(queryHistori, conn))
                 {
                     cmd.Parameters.AddWithValue("harga_beli", hargaBeli);
@@ -104,10 +97,7 @@ namespace ProjekWinform.Controllers
 
             using (var conn = connectDB.GetConn())
             {
-                string query = @"SELECT h.id_histori, h.harga_beli, h.stok_dibeli, h.tanggal_pembelian, u.nama_lengkap, a.nama_alat 
-                        FROM histori_restok h
-                        JOIN users u ON h.id_user = u.id_user
-                        ORDER BY h.id_histori ASC";
+                string query = "SELECT * FROM view_riwayat_restok ORDER BY id_histori ASC";
 
                 using (var cmd = new NpgsqlCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
@@ -127,6 +117,64 @@ namespace ProjekWinform.Controllers
                 }
             }
             return list;
+        }
+
+        public List<HistoriRestok> ReadRestokByKeyword(string keyword)
+        {
+            List<HistoriRestok> list = new List<HistoriRestok>();
+
+            using (var conn = connectDB.GetConn())
+            {
+                string query = @"SELECT * FROM view_riwayat_restok
+                        WHERE nama_lengkap ILIKE @keyword
+                        OR nama_alat ILIKE @keyword
+                        OR CAST(tanggal_pembelian AS TEXT) ILIKE @keyword
+                        OR CAST(tanggal_pembelian AS TEXT) ILIKE @keyword
+                        OR TO_CHAR(tanggal_pembelian, 'DD/MM/YYYY') ILIKE @keyword
+                        ORDER BY id_histori ASC";
+
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("keyword", "%" + keyword + "%");
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            list.Add(new HistoriRestok
+                            {
+                                id_histori = reader.GetInt32(0),
+                                harga_beli = reader.GetInt32(1),
+                                stok_dibeli = reader.GetInt32(2),
+                                tanggal_pembelian = reader.GetDateTime(3),
+                                nama_lengkap = reader.GetString(4),
+                                nama_alat = reader.GetString(5)
+                            });
+                        }
+                    }
+                }
+            }
+            return list;
+        }
+
+        public string Update(AlatPertanian alat)
+        {
+            using (var conn = connectDB.GetConn())
+            {
+                string query = @"UPDATE alat_pertanian 
+                        SET nama_alat=@nama, harga=@harga, status_alat=@status, id_jenis=@id_jenis 
+                        WHERE id_alat=@id";
+
+                using (var cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("nama", alat.nama_alat);
+                    cmd.Parameters.AddWithValue("harga", alat.harga);
+                    cmd.Parameters.AddWithValue("status", alat.status_alat);
+                    cmd.Parameters.AddWithValue("id_jenis", alat.id_jenis);
+                    cmd.Parameters.AddWithValue("id", alat.id_alat);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+            return "Produk berhasil diupdate!";
         }
     }
 }

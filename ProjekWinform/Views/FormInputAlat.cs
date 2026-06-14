@@ -16,11 +16,20 @@ namespace ProjekWinform
             IsiComboJenis();
         }
 
+        public FormInputAlat(AlatPertanian alat) : this()
+        {
+            AlatData = alat;
+            txtNamaAlat.Text = alat.nama_alat;
+            txtHarga.Text = alat.harga.ToString();
+            cmbStatus.Text = alat.status_alat;
+            cmbJenis.SelectedIndex = alat.id_jenis - 1;
+        }
+
         private void IsiComboStatus()
         {
             cmbStatus.Items.Clear();
-            cmbStatus.Items.Add("Ada");
-            cmbStatus.Items.Add("Tidak Ada");
+            cmbStatus.Items.Add("For Sale");
+            cmbStatus.Items.Add("Not For Sale");
         }
 
         private void IsiComboJenis()
@@ -37,7 +46,6 @@ namespace ProjekWinform
         {
             if (string.IsNullOrWhiteSpace(txtNamaAlat.Text) ||
                 string.IsNullOrWhiteSpace(txtHarga.Text) ||
-                string.IsNullOrWhiteSpace(txtStok.Text) ||
                 cmbStatus.SelectedItem == null ||
                 cmbJenis.SelectedItem == null)
             {
@@ -49,7 +57,7 @@ namespace ProjekWinform
 
             AlatData.nama_alat = txtNamaAlat.Text;
             AlatData.harga = Convert.ToDecimal(txtHarga.Text);
-            AlatData.stok = Convert.ToInt32(txtStok.Text);
+            AlatData.stok = 0;
             AlatData.status_alat = cmbStatus.SelectedItem.ToString();
             AlatData.id_jenis = jenisSelected.Id;
 
@@ -65,7 +73,6 @@ namespace ProjekWinform
 
         private void txtNamaAlat_TextChanged(object sender, EventArgs e) { }
         private void txtHarga_TextChanged(object sender, EventArgs e) { }
-        private void txtStok_TextChanged(object sender, EventArgs e) { }
         private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e) { }
         private void cmbJenis_SelectedIndexChanged(object sender, EventArgs e) { }
 

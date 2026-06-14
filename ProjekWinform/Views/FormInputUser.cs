@@ -26,6 +26,7 @@ namespace ProjekWinform
             txtAlamat.Text = user.alamat;
             cmbStatus.Text = user.status;
             cmbIdAkun.Text = user.id_akun.ToString();
+            cmbIdAkun.Enabled = false;
         }
 
         public FormInputUser(int idAkun) : this()

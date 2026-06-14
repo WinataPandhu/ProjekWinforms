@@ -40,10 +40,9 @@ namespace ProjekWinform.Controllers
             return "Data berhasil diupdate";
         }
 
-        public string Delete(int id)
+        public User GetUserByAkun(int id_akun)
         {
-            context.Delete(id);
-            return "Data berhasil dihapus";
+            return context.GetUserByAkun(id_akun);
         }
     }
 }

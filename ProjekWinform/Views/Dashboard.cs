@@ -59,27 +59,25 @@ namespace ProjekWinform
             }
         }
 
-        private void btnHapus_Click(object sender, EventArgs e)
+        private void btnLihat_Click(object sender, EventArgs e)
         {
             if (DgUser.CurrentRow != null)
             {
                 Akun selectedAkun = (Akun)DgUser.CurrentRow.DataBoundItem;
-                DialogResult dr = MessageBox.Show(
-                    "Apakah Anda yakin ingin menghapus akun ini?",
-                    "Konfirmasi Hapus",
-                    MessageBoxButtons.YesNo,
-                    MessageBoxIcon.Question);
+                c_user userController = new c_user();
+                User user = userController.GetUserByAkun(selectedAkun.id_akun);
 
-                if (dr == DialogResult.Yes)
-                {
-                    string result = controller.Delete(selectedAkun.id_akun);
-                    MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadData();
-                }
+                string info = $"Username : {selectedAkun.username}\n" +
+                              $"Nama     : {user.nama_lengkap}\n" +
+                              $"No HP    : {user.no_handphone}\n" +
+                              $"Alamat   : {user.alamat}\n" +
+                              $"Status   : {user.status}";
+
+                MessageBox.Show(info, "Info Pemilik Akun", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Pilih data yang ingin dihapus", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Pilih akun terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

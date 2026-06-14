@@ -72,15 +72,30 @@ namespace ProjekWinform.Models
             }
         }
 
-        public void Delete(int id)
+        public User GetUserByAkun(int id_akun)
         {
             using (NpgsqlConnection conn = connectDB.GetConn())
             {
-                string sql = "DELETE FROM users WHERE id_user=@id";
+                string sql = "SELECT id_user, nama_lengkap, no_handphone, alamat, status, id_akun FROM users WHERE id_akun = @id_akun";
                 using (NpgsqlCommand cmd = new NpgsqlCommand(sql, conn))
                 {
-                    cmd.Parameters.AddWithValue("id", id);
-                    cmd.ExecuteNonQuery();
+                    cmd.Parameters.AddWithValue("id_akun", id_akun);
+                    using (NpgsqlDataReader dr = cmd.ExecuteReader())
+                    {
+                        if (dr.Read())
+                        {
+                            return new User
+                            {
+                                id_user = Convert.ToInt32(dr["id_user"]),
+                                nama_lengkap = dr["nama_lengkap"].ToString(),
+                                no_handphone = dr["no_handphone"].ToString(),
+                                alamat = dr["alamat"].ToString(),
+                                status = dr["status"].ToString(),
+                                id_akun = Convert.ToInt32(dr["id_akun"])
+                            };
+                        }
+                        return null;
+                    }
                 }
             }
         }

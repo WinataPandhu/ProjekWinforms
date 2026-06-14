@@ -30,7 +30,6 @@
         {
             txtNamaAlat = new TextBox();
             txtHarga = new TextBox();
-            txtStok = new TextBox();
             cmbStatus = new ComboBox();
             cmbJenis = new ComboBox();
             btnSimpan = new Button();
@@ -57,14 +56,6 @@
             txtHarga.Size = new Size(202, 27);
             txtHarga.TabIndex = 1;
             txtHarga.TextChanged += txtHarga_TextChanged;
-            // 
-            // txtStok
-            // 
-            txtStok.Location = new Point(34, 241);
-            txtStok.Name = "txtStok";
-            txtStok.Size = new Size(202, 27);
-            txtStok.TabIndex = 2;
-            txtStok.TextChanged += txtStok_TextChanged;
             // 
             // cmbStatus
             // 
@@ -174,7 +165,6 @@
             Controls.Add(btnSimpan);
             Controls.Add(cmbJenis);
             Controls.Add(cmbStatus);
-            Controls.Add(txtStok);
             Controls.Add(txtHarga);
             Controls.Add(txtNamaAlat);
             Name = "FormInputAlat";
@@ -187,7 +177,6 @@
 
         private TextBox txtNamaAlat;
         private TextBox txtHarga;
-        private TextBox txtStok;
         private ComboBox cmbStatus;
         private ComboBox cmbJenis;
         private Button btnSimpan;

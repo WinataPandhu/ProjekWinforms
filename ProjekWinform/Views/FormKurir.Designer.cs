@@ -116,6 +116,7 @@
             Controls.Add(label1);
             Name = "FormKurir";
             Text = "FormKurir";
+            Load += FormKurir_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -48,9 +48,9 @@
             btnEdit.BackColor = Color.ForestGreen;
             btnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEdit.ForeColor = SystemColors.ButtonHighlight;
-            btnEdit.Location = new Point(12, 392);
+            btnEdit.Location = new Point(12, 380);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(184, 49);
+            btnEdit.Size = new Size(194, 58);
             btnEdit.TabIndex = 2;
             btnEdit.Text = "Edit Data";
             btnEdit.UseVisualStyleBackColor = false;
@@ -61,9 +61,9 @@
             BtnKembali.BackColor = Color.Red;
             BtnKembali.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnKembali.ForeColor = SystemColors.ButtonHighlight;
-            BtnKembali.Location = new Point(596, 400);
+            BtnKembali.Location = new Point(581, 380);
             BtnKembali.Name = "BtnKembali";
-            BtnKembali.Size = new Size(192, 41);
+            BtnKembali.Size = new Size(207, 58);
             BtnKembali.TabIndex = 4;
             BtnKembali.Text = "Exit";
             BtnKembali.UseVisualStyleBackColor = false;
