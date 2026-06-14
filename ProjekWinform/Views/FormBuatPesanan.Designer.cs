@@ -49,8 +49,11 @@
             label8 = new Label();
             label9 = new Label();
             btnSimpanPesanan = new Button();
-            button1 = new Button();
+            btnExit = new Button();
             lblKembalian = new Label();
+            label7 = new Label();
+            txtTotalHarga = new Label();
+            btnHapus = new Button();
             ((System.ComponentModel.ISupportInitialize)dgPesanan).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudJumlahbeli).BeginInit();
@@ -143,15 +146,16 @@
             // comboBoxPengambilan
             // 
             comboBoxPengambilan.FormattingEnabled = true;
-            comboBoxPengambilan.Location = new Point(458, 253);
+            comboBoxPengambilan.Location = new Point(458, 277);
             comboBoxPengambilan.Name = "comboBoxPengambilan";
             comboBoxPengambilan.Size = new Size(151, 28);
             comboBoxPengambilan.TabIndex = 19;
+            comboBoxPengambilan.SelectedIndexChanged += comboBoxPengambilan_SelectedIndexChanged_1;
             // 
             // comboBoxBayar
             // 
             comboBoxBayar.FormattingEnabled = true;
-            comboBoxBayar.Location = new Point(458, 315);
+            comboBoxBayar.Location = new Point(458, 339);
             comboBoxBayar.Name = "comboBoxBayar";
             comboBoxBayar.Size = new Size(151, 28);
             comboBoxBayar.TabIndex = 20;
@@ -217,7 +221,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label8.Location = new Point(458, 222);
+            label8.Location = new Point(458, 246);
             label8.Name = "label8";
             label8.Size = new Size(134, 28);
             label8.TabIndex = 28;
@@ -227,7 +231,7 @@
             // 
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label9.Location = new Point(458, 284);
+            label9.Location = new Point(458, 308);
             label9.Name = "label9";
             label9.Size = new Size(128, 28);
             label9.TabIndex = 29;
@@ -244,15 +248,16 @@
             btnSimpanPesanan.UseVisualStyleBackColor = false;
             btnSimpanPesanan.Click += btnSimpanPesanan_Click;
             // 
-            // button1
+            // btnExit
             // 
-            button1.BackColor = Color.Red;
-            button1.Location = new Point(644, 403);
-            button1.Name = "button1";
-            button1.Size = new Size(144, 47);
-            button1.TabIndex = 32;
-            button1.Text = "Exit";
-            button1.UseVisualStyleBackColor = false;
+            btnExit.BackColor = Color.Red;
+            btnExit.Location = new Point(644, 403);
+            btnExit.Name = "btnExit";
+            btnExit.Size = new Size(144, 47);
+            btnExit.TabIndex = 32;
+            btnExit.Text = "Exit";
+            btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
             // 
             // lblKembalian
             // 
@@ -264,14 +269,46 @@
             lblKembalian.Text = "Hasil";
             lblKembalian.Click += lblKembalian_Click;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label7.Location = new Point(575, 203);
+            label7.Name = "label7";
+            label7.Size = new Size(70, 28);
+            label7.TabIndex = 34;
+            label7.Text = "Total :";
+            // 
+            // txtTotalHarga
+            // 
+            txtTotalHarga.AutoSize = true;
+            txtTotalHarga.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtTotalHarga.Location = new Point(651, 203);
+            txtTotalHarga.Name = "txtTotalHarga";
+            txtTotalHarga.Size = new Size(0, 28);
+            txtTotalHarga.TabIndex = 35;
+            // 
+            // btnHapus
+            // 
+            btnHapus.Location = new Point(644, 277);
+            btnHapus.Name = "btnHapus";
+            btnHapus.Size = new Size(144, 40);
+            btnHapus.TabIndex = 36;
+            btnHapus.Text = "Hapus";
+            btnHapus.UseVisualStyleBackColor = true;
+            btnHapus.Click += btnHapus_Click;
+            // 
             // FormBuatPesanan
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnHapus);
+            Controls.Add(txtTotalHarga);
+            Controls.Add(label7);
             Controls.Add(dgList);
             Controls.Add(lblKembalian);
-            Controls.Add(button1);
+            Controls.Add(btnExit);
             Controls.Add(btnSimpanPesanan);
             Controls.Add(label9);
             Controls.Add(label8);
@@ -325,7 +362,10 @@
         private Label label8;
         private Label label9;
         private Button btnSimpanPesanan;
-        private Button button1;
+        private Button btnExit;
         private Label lblKembalian;
+        private Label label7;
+        private Label txtTotalHarga;
+        private Button btnHapus;
     }
 }

@@ -12,6 +12,7 @@ namespace ProjekWinform
 {
     public partial class FormBuatPesanan : Form
     {
+        private string username;
         public FormBuatPesanan()
         {
             InitializeComponent();
@@ -139,6 +140,28 @@ namespace ProjekWinform
             }
         }
 
+        private void HitungTotalBelanjaan()
+        {
+            long total = 0;
+
+            // Iterasi/looping lewat setiap baris di DataGridView belanjaan (kanan atas)
+            foreach (DataGridViewRow row in dgPesanan.Rows)
+            {
+                // Pastikan baris tersebut tidak kosong/bukan baris baru kosong di paling bawah
+                if (row.Cells["Total"].Value != null)
+                {
+                    // Ambil nilai dari kolom "Harga" dan konversi ke angka
+                    long hargaTotalBaris = Convert.ToInt64(row.Cells["Total"].Value);
+
+                    // Tambahkan ke variabel total
+                    total += hargaTotalBaris;
+                }
+            }
+
+            // Tampilkan hasilnya ke TextBox atau Label dengan format mata uang (opsional)
+            txtTotalHarga.Text = total.ToString("N0"); // Contoh hasil: 400.000
+        }
+
         private void comboBoxbarang_SelectedIndexChanged(object sender, EventArgs e) { }
         private void comboBoxPengambilan_SelectedIndexChanged(object sender, EventArgs e) { }
         private void comboBoxBayar_SelectedIndexChanged(object sender, EventArgs e) { }
@@ -180,6 +203,8 @@ namespace ProjekWinform
 
                 dgPesanan.Rows.Add(idAlat, namaBarang, jumlah, harga, total);
 
+                HitungTotalBelanjaan();
+
                 nudJumlahbeli.Value = 0;
                 comboBoxbarang.SelectedIndex = -1;
             }
@@ -197,6 +222,35 @@ namespace ProjekWinform
                 {
                     MessageBox.Show("Metode pengambilan dan pembayaran harus dipilih.");
                     return;
+                }
+
+                if (string.IsNullOrWhiteSpace(txtNama.Text))
+                {
+                    MessageBox.Show("Nama Pelanggan tidak boleh kosong! Silakan isi terlebih dahulu.",
+                        "Peringatan",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    txtNama.Focus(); // Membuat kursor otomatis aktif di inputan nama
+                    return; // Menghentikan proses ke bawah agar tidak masuk ke database
+                }
+
+                if (comboBoxPengambilan.Text != null && comboBoxPengambilan.Text.Contains("Diantar"))
+                {
+                    if (string.IsNullOrWhiteSpace(txtNohp.Text))
+                    {
+                        MessageBox.Show("Untuk pengiriman diantar, Nomor HP wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtNohp.Focus();
+                        return; // Batalkan proses simpan
+                    }
+
+                    // Cek apakah Alamat kosong
+                    if (string.IsNullOrWhiteSpace(txtAlamat.Text))
+                    {
+                        MessageBox.Show("Untuk pengiriman diantar, Alamat rumah wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        txtAlamat.Focus();
+                        return; // Batalkan proses simpan
+                    }
                 }
 
                 using (NpgsqlConnection conn = connectDB.GetConn())
@@ -301,5 +355,31 @@ namespace ProjekWinform
         {
 
         }
+
+        private void btnHapus_Click(object sender, EventArgs e)
+        {
+            // Memeriksa apakah ada baris yang sedang dipilih dan bukan baris kosong paling bawah
+            if (dgPesanan.CurrentRow != null && !dgPesanan.CurrentRow.IsNewRow)
+            {
+                // Langsung hapus baris yang sedang diklik tanpa konfirmasi
+                dgPesanan.Rows.Remove(dgPesanan.CurrentRow);
+
+                // Langsung hitung ulang total belanjaannya
+                HitungTotalBelanjaan();
+            }
+        }
+
+        private void comboBoxPengambilan_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            FormKasir pesanan = new FormKasir(username);
+            pesanan.Show();
+            this.Hide();
+        }
+       
     }
 }
