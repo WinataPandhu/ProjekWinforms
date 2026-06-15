@@ -13,7 +13,12 @@ namespace ProjekWinform.Controllers
 
             using (var conn = connectDB.GetConn())
             {
-                string query = "SELECT id_alat, nama_alat, harga, stok, status_alat, id_jenis FROM alat_pertanian ORDER BY id_alat ASC";
+                // KODE DIPERBARUI: Menggunakan INNER JOIN untuk mengambil nama_jenis
+                // Sesuaikan "jenis_alat" dan "nama_jenis" dengan nama tabel/kolom asli di databasemu
+                string query = @"SELECT a.id_alat, a.nama_alat, a.harga, a.stok, a.status_alat, a.id_jenis, j.nama_jenis 
+                        FROM alat_pertanian a
+                        INNER JOIN jenis_alat j ON a.id_jenis = j.id_jenis
+                        ORDER BY a.id_alat ASC";
 
                 using (var cmd = new NpgsqlCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
@@ -27,7 +32,10 @@ namespace ProjekWinform.Controllers
                             harga = reader.GetDecimal(2),
                             stok = reader.GetInt32(3),
                             status_alat = reader.GetString(4),
-                            id_jenis = reader.GetInt32(5)
+                            id_jenis = reader.GetInt32(5),
+
+                            // TAMBAHKAN INI: Membaca nama jenis dari indeks ke-6 hasil query
+                            nama_jenis = reader.IsDBNull(6) ? "" : reader.GetString(6)
                         });
                     }
                 }

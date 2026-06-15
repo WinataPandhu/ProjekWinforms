@@ -28,6 +28,9 @@ namespace ProjekWinform
             List<AlatPertanian> listAlat = controller.Read();
             DgProduk.DataSource = null;
             DgProduk.DataSource = listAlat;
+
+            if (DgProduk.Columns["id_jenis"] != null)
+                DgProduk.Columns["id_jenis"].Visible = false;
         }
 
         private void BtnTambah_Click(object sender, EventArgs e)

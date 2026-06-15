@@ -42,7 +42,8 @@ namespace ProjekWinform.Controllers
             using (NpgsqlConnection conn = connectDB.GetConn())
             {
                 string query = @"SELECT * FROM view_riwayat_pengiriman
-                        WHERE nama_pelanggan ILIKE @keyword
+                        WHERE status_pengiriman = 'Belum Dikirim'
+                        AND nama_pelanggan ILIKE @keyword
                         ORDER BY tanggal_pengiriman ASC";
 
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);

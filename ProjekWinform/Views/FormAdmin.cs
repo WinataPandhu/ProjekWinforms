@@ -38,7 +38,7 @@ namespace ProjekWinform
             this.Hide();
         }
 
-        private void BtnRiwayat_Click(object sender, EventArgs e) 
+        private void BtnRiwayat_Click(object sender, EventArgs e)
         {
             FormRiwayat formRiwayat = new FormRiwayat(username, id_akun);
             formRiwayat.Show();
@@ -50,6 +50,11 @@ namespace ProjekWinform
             Login login = new Login();
             login.Show();
             this.Hide();
+        }
+
+        private void FormAdmin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

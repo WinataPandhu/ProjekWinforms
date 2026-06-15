@@ -36,7 +36,6 @@
             btnBatal = new Button();
             label1 = new Label();
             label2 = new Label();
-            label3 = new Label();
             label4 = new Label();
             label5 = new Label();
             SuspendLayout();
@@ -121,16 +120,6 @@
             label2.TabIndex = 8;
             label2.Text = "Harga";
             // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label3.Location = new Point(34, 210);
-            label3.Name = "label3";
-            label3.Size = new Size(54, 28);
-            label3.TabIndex = 9;
-            label3.Text = "Stok";
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -158,7 +147,6 @@
             ClientSize = new Size(800, 450);
             Controls.Add(label5);
             Controls.Add(label4);
-            Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(btnBatal);
@@ -183,7 +171,6 @@
         private Button btnBatal;
         private Label label1;
         private Label label2;
-        private Label label3;
         private Label label4;
         private Label label5;
     }

@@ -135,6 +135,7 @@
             DoubleBuffered = true;
             Name = "FormKasir";
             Text = "FormKasir";
+            Load += FormKasir_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -151,6 +151,7 @@
             DoubleBuffered = true;
             Name = "FormAdmin";
             Text = "FormAdmin";
+            Load += FormAdmin_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

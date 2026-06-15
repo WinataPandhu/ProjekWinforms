@@ -69,5 +69,10 @@ namespace ProjekWinform
                 DgRiwayat.DataSource = listRestok;
             }
         }
+
+        private void FormRiwayat_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

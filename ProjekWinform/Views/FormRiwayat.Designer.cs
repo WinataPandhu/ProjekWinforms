@@ -118,6 +118,7 @@
             Controls.Add(DgRiwayat);
             Name = "FormRiwayat";
             Text = "FormRiwayat";
+            Load += FormRiwayat_Load;
             ((System.ComponentModel.ISupportInitialize)DgRiwayat).EndInit();
             ResumeLayout(false);
             PerformLayout();

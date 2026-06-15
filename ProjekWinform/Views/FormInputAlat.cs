@@ -57,7 +57,6 @@ namespace ProjekWinform
 
             AlatData.nama_alat = txtNamaAlat.Text;
             AlatData.harga = Convert.ToDecimal(txtHarga.Text);
-            AlatData.stok = 0;
             AlatData.status_alat = cmbStatus.SelectedItem.ToString();
             AlatData.id_jenis = jenisSelected.Id;
 

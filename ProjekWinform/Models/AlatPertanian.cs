@@ -8,5 +8,6 @@
         public int stok { get; set; }
         public string status_alat { get; set; } = string.Empty;
         public int id_jenis { get; set; }
+        public string nama_jenis { get; set; }
     }
 }
