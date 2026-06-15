@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Models;
+using ProjekWinform.Models;
 using System;
 using System.Windows.Forms;
 
@@ -14,6 +14,7 @@ namespace ProjekWinform
             this.StartPosition = FormStartPosition.CenterScreen;
             AlatData = alat;
             txtHargaBaru.Text = alat.harga.ToString();
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
 

@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,13 +13,15 @@ namespace ProjekWinform.Views
     {
         public string username;
         c_transaksi controllerTransaksi = new c_transaksi();
-        public FormRiwayatKasir()
+        public FormRiwayatKasir(string username)
         {
             InitializeComponent();
+            this.username = username;
             this.StartPosition = FormStartPosition.CenterScreen;
             dgRiwayat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgRiwayat.ReadOnly = true;
             LoadData();
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void LoadData()

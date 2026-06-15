@@ -11,6 +11,8 @@ namespace ProjekWinform
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
+            ProjekWinform.Helpers.ThemeHelper.LoadLogo(pictureBox1);
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -63,7 +65,7 @@ namespace ProjekWinform
                                 }
                                 else if (role == "Kurir")
                                 {
-                                    FormKurir formKurir = new FormKurir();
+                                    FormKurir formKurir = new FormKurir(usernameInput);
                                     formKurir.Show();
                                     this.Hide();
                                 }

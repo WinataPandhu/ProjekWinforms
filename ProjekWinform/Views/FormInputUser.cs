@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using ProjekWinform.Models;
 using System;
 using System.Collections.Generic;
@@ -16,6 +16,7 @@ namespace ProjekWinform
             this.StartPosition = FormStartPosition.CenterParent;
             IsiComboStatus();
             IsiComboAkun();
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         public FormInputUser(User user) : this()

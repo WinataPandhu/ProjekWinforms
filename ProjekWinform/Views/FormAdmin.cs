@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace ProjekWinform
@@ -15,6 +15,8 @@ namespace ProjekWinform
             this.id_akun = id_akun;
             this.StartPosition = FormStartPosition.CenterScreen;
             LabelAdmin.Text = $"Selamat Datang, {username}!";
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
+            ProjekWinform.Helpers.ThemeHelper.LoadLogo(pictureBox1);
         }
 
         private void BtnAkun_Click(object sender, EventArgs e)

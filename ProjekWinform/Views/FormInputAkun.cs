@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using ProjekWinform.Models;
 using System;
 using System.Windows.Forms;
@@ -15,6 +15,7 @@ namespace ProjekWinform
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
             IsiComboRole();
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         public FormInputAkun(Akun akun)
@@ -29,6 +30,7 @@ namespace ProjekWinform
             cmbRole.SelectedValue = akun.id_role;
 
             AkunData = akun;
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void IsiComboRole()

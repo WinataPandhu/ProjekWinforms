@@ -1,4 +1,4 @@
-﻿namespace ProjekWinform
+namespace ProjekWinform
 {
     partial class FormKurir
     {
@@ -51,17 +51,17 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(251, 110);
+            pictureBox1.Location = new Point(668, 15);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(503, 328);
+            pictureBox1.Size = new Size(120, 60);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
+            pictureBox1.Visible = true;
             // 
             // BtnAntar
             // 
             BtnAntar.BackColor = Color.Orange;
-            BtnAntar.BackgroundImage = (Image)resources.GetObject("BtnAntar.BackgroundImage");
-            BtnAntar.BackgroundImageLayout = ImageLayout.Stretch;
+
             BtnAntar.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnAntar.ForeColor = SystemColors.ButtonHighlight;
             BtnAntar.Location = new Point(251, 110);
@@ -75,8 +75,7 @@
             // BtnExit
             // 
             BtnExit.BackColor = Color.Red;
-            BtnExit.BackgroundImage = (Image)resources.GetObject("BtnExit.BackgroundImage");
-            BtnExit.BackgroundImageLayout = ImageLayout.Stretch;
+
             BtnExit.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnExit.ForeColor = SystemColors.ButtonHighlight;
             BtnExit.Location = new Point(251, 371);
@@ -90,8 +89,7 @@
             // BtnRiwayat
             // 
             BtnRiwayat.BackColor = Color.FromArgb(192, 192, 0);
-            BtnRiwayat.BackgroundImage = (Image)resources.GetObject("BtnRiwayat.BackgroundImage");
-            BtnRiwayat.BackgroundImageLayout = ImageLayout.Stretch;
+
             BtnRiwayat.Font = new Font("Segoe UI", 24F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnRiwayat.ForeColor = SystemColors.ButtonHighlight;
             BtnRiwayat.Location = new Point(507, 110);
@@ -106,8 +104,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Stretch;
+
             ClientSize = new Size(800, 450);
             Controls.Add(BtnExit);
             Controls.Add(BtnRiwayat);

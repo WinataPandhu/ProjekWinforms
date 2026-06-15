@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Models;
+using ProjekWinform.Models;
 using System;
 using System.Windows.Forms;
 
@@ -14,6 +14,7 @@ namespace ProjekWinform
             this.StartPosition = FormStartPosition.CenterScreen;
             IsiComboStatus();
             IsiComboJenis();
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         public FormInputAlat(AlatPertanian alat) : this()

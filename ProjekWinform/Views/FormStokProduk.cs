@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq; // Dibutuhkan untuk memfilter data menggunakan LINQ
@@ -25,6 +25,7 @@ namespace ProjekWinform.Views
             dgStokProduk.ReadOnly = true;
             dgStokProduk.AllowUserToAddRows = false;
             dgStokProduk.AllowUserToDeleteRows = false;
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void FormStokProduk_Load(object sender, EventArgs e)
@@ -92,6 +93,11 @@ namespace ProjekWinform.Views
             FormKasir kasir = new FormKasir(usernameAktif);
             kasir.Show();
             this.Close();
+        }
+
+        private void dgStokProduk_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

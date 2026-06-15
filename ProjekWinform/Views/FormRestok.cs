@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
 namespace ProjekWinform
@@ -12,6 +12,7 @@ namespace ProjekWinform
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void btnSimpan_Click(object sender, EventArgs e)

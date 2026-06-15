@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -16,6 +16,7 @@ namespace ProjekWinform
             dgAntar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgAntar.ReadOnly = true;
             LoadData();
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void LoadData(string keyword = "")

@@ -59,6 +59,7 @@
             dgStokProduk.RowHeadersWidth = 51;
             dgStokProduk.Size = new Size(647, 372);
             dgStokProduk.TabIndex = 2;
+            dgStokProduk.CellContentClick += dgStokProduk_CellContentClick;
             // 
             // btnExit
             // 

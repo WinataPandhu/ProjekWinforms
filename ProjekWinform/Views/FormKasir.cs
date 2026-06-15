@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using ProjekWinform.Views;
 using System;
 using System.Windows.Forms;
@@ -18,6 +18,8 @@ namespace ProjekWinform
             this.StartPosition = FormStartPosition.CenterScreen;
             LabelKasir.Text = $"Selamat Datang, {username}!";
             id_user = controller.GetIdUserByUsername(username);
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
+            ProjekWinform.Helpers.ThemeHelper.LoadLogo(pictureBox1);
         }
 
         private void BtnPesanan_Click(object sender, EventArgs e)
@@ -36,7 +38,7 @@ namespace ProjekWinform
 
         private void BtnRiwayat_Click(object sender, EventArgs e)
         {
-            FormRiwayatKasir riwayatKasir = new FormRiwayatKasir();
+            FormRiwayatKasir riwayatKasir = new FormRiwayatKasir(username);
             riwayatKasir.Show();
             this.Hide();
         }

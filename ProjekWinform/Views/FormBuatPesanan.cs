@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using System;
 using System.Data;
 using System.Windows.Forms;
@@ -18,6 +18,8 @@ namespace ProjekWinform
             InitializeComponent();
             this.username = username;
             this.id_user = id_user;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void FormBuatPesanan_Load(object sender, EventArgs e)
@@ -190,11 +192,6 @@ namespace ProjekWinform
             }
         }
 
-        private void txtCari_TextChanged(object sender, EventArgs e)
-        {
-            LoadKatalog(txtCari.Text);
-        }
-
         private void dgList_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -233,5 +230,10 @@ namespace ProjekWinform
         private void comboBoxBayar_SelectedIndexChanged(object sender, EventArgs e) { }
         private void dgPesanan_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
         private void comboBoxPengambilan_SelectedIndexChanged_1(object sender, EventArgs e) { }
+
+        private void dgList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

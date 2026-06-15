@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using ProjekWinform.Models;
 using System;
 using System.Collections.Generic;
@@ -21,6 +21,7 @@ namespace ProjekWinform
             DgProduk.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             LoadData();
             DgProduk.ReadOnly = true;
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         public void LoadData()

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,9 +13,14 @@ namespace ProjekWinform
     {
         private string username;
 
-        public FormKurir()
+        public FormKurir(string username = "Kurir")
         {
             InitializeComponent();
+            this.username = username;
+            this.StartPosition = FormStartPosition.CenterScreen;
+            label1.Text = $"Selamat Datang, {username}!";
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
+            ProjekWinform.Helpers.ThemeHelper.LoadLogo(pictureBox1);
         }
 
         private void BtnAntar_Click(object sender, EventArgs e)

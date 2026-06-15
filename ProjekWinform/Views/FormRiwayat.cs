@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using ProjekWinform.Models;
 using System;
 using System.Collections.Generic;
@@ -23,6 +23,7 @@ namespace ProjekWinform
             this.StartPosition = FormStartPosition.CenterScreen;
             DgRiwayat.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgRiwayat.ReadOnly = true;
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void btnRiwayatRestok_Click(object sender, EventArgs e)

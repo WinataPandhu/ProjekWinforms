@@ -40,7 +40,6 @@
             buttonTambah = new Button();
             comboBoxPengambilan = new ComboBox();
             comboBoxBayar = new ComboBox();
-            txtCari = new TextBox();
             label2 = new Label();
             label3 = new Label();
             label4 = new Label();
@@ -78,6 +77,7 @@
             dgList.Size = new Size(396, 150);
             dgList.TabIndex = 1;
             dgList.CellClick += dgList_CellClick;
+            dgList.CellContentClick += dgList_CellContentClick;
             // 
             // label1
             // 
@@ -159,13 +159,6 @@
             comboBoxBayar.Name = "comboBoxBayar";
             comboBoxBayar.Size = new Size(151, 28);
             comboBoxBayar.TabIndex = 20;
-            // 
-            // txtCari
-            // 
-            txtCari.Location = new Point(22, 413);
-            txtCari.Name = "txtCari";
-            txtCari.Size = new Size(125, 27);
-            txtCari.TabIndex = 22;
             // 
             // label2
             // 
@@ -317,7 +310,6 @@
             Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
-            Controls.Add(txtCari);
             Controls.Add(comboBoxBayar);
             Controls.Add(comboBoxPengambilan);
             Controls.Add(buttonTambah);
@@ -353,7 +345,6 @@
         private Button buttonTambah;
         private ComboBox comboBoxPengambilan;
         private ComboBox comboBoxBayar;
-        private TextBox txtCari;
         private Label label2;
         private Label label3;
         private Label label4;

@@ -28,138 +28,188 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             DgUser = new DataGridView();
             btnTambah = new Button();
             btnEdit = new Button();
-            pictureBox1 = new PictureBox();
             label1 = new Label();
             BtnKembali = new Button();
             btnLihat = new Button();
+            panelSidebar = new Panel();
             ((System.ComponentModel.ISupportInitialize)DgUser).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelSidebar.SuspendLayout();
             SuspendLayout();
             // 
             // DgUser
             // 
+            DgUser.AllowUserToAddRows = false;
+            DgUser.AllowUserToDeleteRows = false;
+            DgUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             DgUser.BackgroundColor = Color.White;
-            DgUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgUser.Location = new Point(226, 31);
-            DgUser.Margin = new Padding(2);
+            DgUser.BorderStyle = BorderStyle.None;
+            DgUser.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
+            DgUser.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = Color.FromArgb(30, 30, 80);
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9.5F, FontStyle.Bold);
+            dataGridViewCellStyle1.ForeColor = Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = Color.FromArgb(30, 30, 80);
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            DgUser.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            DgUser.ColumnHeadersHeight = 40;
+            DgUser.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = Color.White;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9.5F);
+            dataGridViewCellStyle2.ForeColor = Color.FromArgb(100, 100, 130);
+            dataGridViewCellStyle2.SelectionBackColor = Color.FromArgb(235, 235, 250);
+            dataGridViewCellStyle2.SelectionForeColor = Color.FromArgb(30, 30, 80);
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            DgUser.DefaultCellStyle = dataGridViewCellStyle2;
+            DgUser.EnableHeadersVisualStyles = false;
+            DgUser.GridColor = Color.FromArgb(240, 240, 245);
+            DgUser.Location = new Point(250, 30);
             DgUser.Name = "DgUser";
-            DgUser.RowHeadersWidth = 62;
-            DgUser.Size = new Size(617, 322);
-            DgUser.TabIndex = 1;
+            DgUser.ReadOnly = true;
+            DgUser.RowHeadersVisible = false;
+            DgUser.RowHeadersWidth = 51;
+            DgUser.RowTemplate.Height = 35;
+            DgUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            DgUser.Size = new Size(575, 440);
+            DgUser.TabIndex = 5;
+            DgUser.CellContentClick += DgUser_CellContentClick;
             // 
             // btnTambah
             // 
-            btnTambah.BackColor = Color.LimeGreen;
-            btnTambah.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTambah.ForeColor = Color.White;
-            btnTambah.Location = new Point(-1, 65);
-            btnTambah.Margin = new Padding(2);
+            btnTambah.BackColor = Color.Transparent;
+            btnTambah.Cursor = Cursors.Hand;
+            btnTambah.FlatAppearance.BorderSize = 0;
+            btnTambah.FlatAppearance.MouseDownBackColor = Color.FromArgb(35, 35, 90);
+            btnTambah.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 55, 130);
+            btnTambah.FlatStyle = FlatStyle.Flat;
+            btnTambah.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnTambah.ForeColor = Color.FromArgb(240, 240, 255);
+            btnTambah.Location = new Point(0, 100);
             btnTambah.Name = "btnTambah";
-            btnTambah.Size = new Size(196, 72);
-            btnTambah.TabIndex = 2;
-            btnTambah.Text = "Tambah Akun";
+            btnTambah.Padding = new Padding(20, 0, 0, 0);
+            btnTambah.Size = new Size(220, 50);
+            btnTambah.TabIndex = 1;
+            btnTambah.Text = "  Tambah Akun";
+            btnTambah.TextAlign = ContentAlignment.MiddleLeft;
             btnTambah.UseVisualStyleBackColor = false;
             btnTambah.Click += btnTambah_Click;
             // 
             // btnEdit
             // 
-            btnEdit.BackColor = Color.FromArgb(0, 192, 192);
-            btnEdit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnEdit.ForeColor = Color.White;
-            btnEdit.Location = new Point(-1, 161);
-            btnEdit.Margin = new Padding(2);
+            btnEdit.BackColor = Color.Transparent;
+            btnEdit.Cursor = Cursors.Hand;
+            btnEdit.FlatAppearance.BorderSize = 0;
+            btnEdit.FlatAppearance.MouseDownBackColor = Color.FromArgb(35, 35, 90);
+            btnEdit.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 55, 130);
+            btnEdit.FlatStyle = FlatStyle.Flat;
+            btnEdit.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnEdit.ForeColor = Color.FromArgb(240, 240, 255);
+            btnEdit.Location = new Point(0, 155);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(173, 69);
-            btnEdit.TabIndex = 3;
-            btnEdit.Text = "Edit Akun";
+            btnEdit.Padding = new Padding(20, 0, 0, 0);
+            btnEdit.Size = new Size(220, 50);
+            btnEdit.TabIndex = 2;
+            btnEdit.Text = "  Edit Akun";
+            btnEdit.TextAlign = ContentAlignment.MiddleLeft;
             btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
-            // 
-            // pictureBox1
-            // 
-            pictureBox1.Location = new Point(-1, -6);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(196, 570);
-            pictureBox1.TabIndex = 5;
-            pictureBox1.TabStop = false;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.BackColor = SystemColors.ButtonFace;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(11, 9);
-            label1.Margin = new Padding(2, 0, 2, 0);
+            label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(24, 30);
             label1.Name = "label1";
-            label1.Size = new Size(85, 41);
-            label1.TabIndex = 6;
-            label1.Text = "Fitur";
+            label1.Size = new Size(112, 37);
+            label1.TabIndex = 0;
+            label1.Text = "ADMIN";
             // 
             // BtnKembali
             // 
-            BtnKembali.BackColor = Color.Red;
-            BtnKembali.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnKembali.BackColor = Color.FromArgb(215, 60, 60);
+            BtnKembali.Cursor = Cursors.Hand;
+            BtnKembali.FlatAppearance.BorderSize = 0;
+            BtnKembali.FlatStyle = FlatStyle.Flat;
+            BtnKembali.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
             BtnKembali.ForeColor = Color.White;
-            BtnKembali.Location = new Point(-1, 344);
-            BtnKembali.Margin = new Padding(2);
+            BtnKembali.Location = new Point(24, 425);
             BtnKembali.Name = "BtnKembali";
-            BtnKembali.Size = new Size(108, 57);
-            BtnKembali.TabIndex = 7;
-            BtnKembali.Text = "Exit";
+            BtnKembali.Size = new Size(172, 45);
+            BtnKembali.TabIndex = 4;
+            BtnKembali.Text = "Keluar / Exit";
             BtnKembali.UseVisualStyleBackColor = false;
             BtnKembali.Click += BtnKembali_Click;
             // 
             // btnLihat
             // 
-            btnLihat.BackColor = Color.FromArgb(255, 128, 0);
-            btnLihat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnLihat.ForeColor = Color.White;
-            btnLihat.Location = new Point(-1, 252);
-            btnLihat.Margin = new Padding(2);
+            btnLihat.BackColor = Color.Transparent;
+            btnLihat.Cursor = Cursors.Hand;
+            btnLihat.FlatAppearance.BorderSize = 0;
+            btnLihat.FlatAppearance.MouseDownBackColor = Color.FromArgb(35, 35, 90);
+            btnLihat.FlatAppearance.MouseOverBackColor = Color.FromArgb(55, 55, 130);
+            btnLihat.FlatStyle = FlatStyle.Flat;
+            btnLihat.Font = new Font("Segoe UI", 10F, FontStyle.Bold);
+            btnLihat.ForeColor = Color.FromArgb(240, 240, 255);
+            btnLihat.Location = new Point(0, 210);
             btnLihat.Name = "btnLihat";
-            btnLihat.Size = new Size(145, 65);
-            btnLihat.TabIndex = 4;
-            btnLihat.Text = "Lihat Pemilik";
+            btnLihat.Padding = new Padding(20, 0, 0, 0);
+            btnLihat.Size = new Size(220, 50);
+            btnLihat.TabIndex = 3;
+            btnLihat.Text = "  Lihat Pemilik";
+            btnLihat.TextAlign = ContentAlignment.MiddleLeft;
             btnLihat.UseVisualStyleBackColor = false;
             btnLihat.Click += btnLihat_Click;
+            // 
+            // panelSidebar
+            // 
+            panelSidebar.BackColor = Color.FromArgb(45, 45, 110);
+            panelSidebar.Controls.Add(label1);
+            panelSidebar.Controls.Add(btnTambah);
+            panelSidebar.Controls.Add(btnEdit);
+            panelSidebar.Controls.Add(btnLihat);
+            panelSidebar.Controls.Add(BtnKembali);
+            panelSidebar.Dock = DockStyle.Left;
+            panelSidebar.Location = new Point(0, 0);
+            panelSidebar.Name = "panelSidebar";
+            panelSidebar.Size = new Size(220, 500);
+            panelSidebar.TabIndex = 0;
             // 
             // Dashboard
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(854, 474);
-            Controls.Add(BtnKembali);
-            Controls.Add(btnLihat);
-            Controls.Add(btnEdit);
-            Controls.Add(label1);
-            Controls.Add(btnTambah);
-            Controls.Add(pictureBox1);
+            BackColor = Color.FromArgb(245, 246, 250);
+            ClientSize = new Size(854, 500);
             Controls.Add(DgUser);
+            Controls.Add(panelSidebar);
             DoubleBuffered = true;
-            Margin = new Padding(2);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
             Name = "Dashboard";
-            Text = "Dashboard";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Dashboard - Toko Alat Pertanian";
             Load += Dashboard_Load;
             ((System.ComponentModel.ISupportInitialize)DgUser).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelSidebar.ResumeLayout(false);
+            panelSidebar.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
         private DataGridView DgUser;
         private Button btnTambah;
         private Button btnEdit;
-        private PictureBox pictureBox1;
         private Label label1;
         private Button BtnKembali;
         private Button btnLihat;
+        private Panel panelSidebar;
     }
 }

@@ -1,4 +1,4 @@
-﻿using ProjekWinform.Controllers;
+using ProjekWinform.Controllers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +21,7 @@ namespace ProjekWinform
             dgRiwayatPengirim.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgRiwayatPengirim.ReadOnly = true;
             LoadRiwayat();
+            ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
         }
 
         private void LoadRiwayat(string tanggal = "")

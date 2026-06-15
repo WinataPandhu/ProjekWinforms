@@ -1,4 +1,4 @@
-﻿namespace ProjekWinform
+namespace ProjekWinform
 {
     partial class FormKasir
     {
@@ -40,18 +40,17 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(29, 80);
+            pictureBox1.Location = new Point(592, 15);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(663, 358);
+            pictureBox1.Size = new Size(100, 60);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
-            pictureBox1.Click += pictureBox1_Click;
+            pictureBox1.Visible = true;
             // 
             // BtnPesanan
             // 
             BtnPesanan.BackColor = Color.DarkGreen;
-            BtnPesanan.BackgroundImage = (Image)resources.GetObject("BtnPesanan.BackgroundImage");
-            BtnPesanan.BackgroundImageLayout = ImageLayout.Stretch;
+
             BtnPesanan.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnPesanan.ForeColor = SystemColors.ButtonHighlight;
             BtnPesanan.Location = new Point(29, 80);
@@ -65,8 +64,7 @@
             // BtnStok
             // 
             BtnStok.BackColor = Color.MediumSeaGreen;
-            BtnStok.BackgroundImage = (Image)resources.GetObject("BtnStok.BackgroundImage");
-            BtnStok.BackgroundImageLayout = ImageLayout.Stretch;
+
             BtnStok.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnStok.ForeColor = SystemColors.ControlLightLight;
             BtnStok.Location = new Point(389, 80);
@@ -92,8 +90,7 @@
             // BtnRiwayat
             // 
             BtnRiwayat.BackColor = Color.LimeGreen;
-            BtnRiwayat.BackgroundImage = (Image)resources.GetObject("BtnRiwayat.BackgroundImage");
-            BtnRiwayat.BackgroundImageLayout = ImageLayout.Stretch;
+
             BtnRiwayat.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnRiwayat.ForeColor = Color.Snow;
             BtnRiwayat.Location = new Point(389, 224);
@@ -107,8 +104,7 @@
             // BtnExit
             // 
             BtnExit.BackColor = Color.Red;
-            BtnExit.BackgroundImage = (Image)resources.GetObject("BtnExit.BackgroundImage");
-            BtnExit.BackgroundImageLayout = ImageLayout.Stretch;
+
             BtnExit.Font = new Font("Segoe UI", 22.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnExit.ForeColor = SystemColors.ControlLightLight;
             BtnExit.Location = new Point(389, 355);
@@ -123,8 +119,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
-            BackgroundImageLayout = ImageLayout.Stretch;
+
             ClientSize = new Size(714, 450);
             Controls.Add(BtnExit);
             Controls.Add(BtnRiwayat);

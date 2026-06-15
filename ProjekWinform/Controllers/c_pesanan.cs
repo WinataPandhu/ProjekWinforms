@@ -11,7 +11,7 @@ namespace ProjekWinform.Controllers
         {
             using (NpgsqlConnection conn = connectDB.GetConn())
             {
-                string query = "SELECT id_alat, nama_alat FROM alat_pertanian";
+                string query = "SELECT id_alat, nama_alat FROM alat_pertanian WHERE stok > 0 ";
                 NpgsqlDataAdapter da = new NpgsqlDataAdapter(query, conn);
                 DataTable dt = new DataTable();
                 da.Fill(dt);
