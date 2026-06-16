@@ -34,6 +34,7 @@
             txtHargaBeli = new TextBox();
             btnSimpan = new Button();
             btnBatal = new Button();
+            label3 = new Label();
             SuspendLayout();
             // 
             // label1
@@ -75,7 +76,7 @@
             btnSimpan.BackColor = Color.Green;
             btnSimpan.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSimpan.ForeColor = SystemColors.ButtonHighlight;
-            btnSimpan.Location = new Point(223, 278);
+            btnSimpan.Location = new Point(223, 291);
             btnSimpan.Name = "btnSimpan";
             btnSimpan.Size = new Size(154, 64);
             btnSimpan.TabIndex = 4;
@@ -88,7 +89,7 @@
             btnBatal.BackColor = Color.FromArgb(192, 0, 0);
             btnBatal.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnBatal.ForeColor = SystemColors.ButtonHighlight;
-            btnBatal.Location = new Point(397, 278);
+            btnBatal.Location = new Point(401, 291);
             btnBatal.Name = "btnBatal";
             btnBatal.Size = new Size(154, 64);
             btnBatal.TabIndex = 5;
@@ -96,11 +97,23 @@
             btnBatal.UseVisualStyleBackColor = false;
             btnBatal.Click += btnBatal_Click;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label3.ForeColor = Color.White;
+            label3.Location = new Point(274, 24);
+            label3.Name = "label3";
+            label3.Size = new Size(237, 37);
+            label3.TabIndex = 6;
+            label3.Text = "RESTOK PRODUK";
+            // 
             // FormRestok
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label3);
             Controls.Add(btnBatal);
             Controls.Add(btnSimpan);
             Controls.Add(txtHargaBeli);
@@ -121,5 +134,6 @@
         private TextBox txtHargaBeli;
         private Button btnSimpan;
         private Button btnBatal;
+        private Label label3;
     }
 }

@@ -86,11 +86,4 @@ namespace ProjekWinform
         private void cmbJenis_SelectedIndexChanged(object sender, EventArgs e) { }
 
     }
-
-    public class JenisItem
-    {
-        public int Id { get; set; }
-        public string Nama { get; set; } = string.Empty;
-        public override string ToString() => Nama;
-    }
 }

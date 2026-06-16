@@ -13,7 +13,10 @@ namespace ProjekWinform.Models
             List<Akun> list = new List<Akun>();
             using (var conn = connectDB.GetConn())
             {
-                string query = "SELECT id_akun, username, password_akun, email, id_role FROM akun";
+                string query = @"SELECT a.id_akun, a.username, a.password_akun, a.email, a.id_role, r.nama_role 
+                         FROM akun a
+                         JOIN roles r ON a.id_role = r.id_role";
+
                 using (var cmd = new NpgsqlCommand(query, conn))
                 using (var reader = cmd.ExecuteReader())
                 {
@@ -25,7 +28,8 @@ namespace ProjekWinform.Models
                             username = reader.GetString(1),
                             password_akun = reader.GetString(2),
                             email = reader.GetString(3),
-                            id_role = reader.GetInt32(4)
+                            id_role = reader.GetInt32(4),
+                            nama_role = reader.GetString(5)
                         });
                     }
                 }

@@ -16,6 +16,7 @@
     {
         public string password_akun { get; set; } = string.Empty;
         public int id_role { get; set; }
+        public string nama_role { get; set; } = string.Empty;
 
         public override string GetInfoLengkap()
         {

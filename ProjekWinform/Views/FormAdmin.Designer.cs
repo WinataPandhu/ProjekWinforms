@@ -28,7 +28,6 @@ namespace ProjekWinform
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdmin));
             LabelAdmin = new Label();
             pictureBox1 = new PictureBox();
             BtnAkun = new Button();
@@ -39,65 +38,36 @@ namespace ProjekWinform
             panelSidebar = new Panel();
             lblShopName = new Label();
             lblSubtitle = new Label();
-            panelSidebar.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            panelSidebar.SuspendLayout();
             SuspendLayout();
- 
-            // === PANEL SIDEBAR ===
-            panelSidebar.BackColor = Color.FromArgb(34, 112, 63);
-            panelSidebar.Controls.Add(pictureBox1);
-            panelSidebar.Controls.Add(lblShopName);
-            panelSidebar.Controls.Add(BtnExit);
-            panelSidebar.Location = new Point(0, 0);
-            panelSidebar.Name = "panelSidebar";
-            panelSidebar.Size = new Size(220, 520);
-            panelSidebar.TabIndex = 7;
- 
-            // === LBL SHOP NAME ===
-            lblShopName.BackColor = Color.Transparent;
-            lblShopName.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
-            lblShopName.ForeColor = Color.White;
-            lblShopName.Location = new Point(10, 165);
-            lblShopName.Name = "lblShopName";
-            lblShopName.Size = new Size(200, 35);
-            lblShopName.TabIndex = 8;
-            lblShopName.Text = "Toko Pertanian";
-            lblShopName.TextAlign = ContentAlignment.MiddleCenter;
- 
-            // === LBL SUBTITLE ===
-            lblSubtitle.BackColor = Color.Transparent;
-            lblSubtitle.Font = new Font("Segoe UI", 10F);
-            lblSubtitle.ForeColor = Color.FromArgb(80, 100, 85);
-            lblSubtitle.Location = new Point(250, 75);
-            lblSubtitle.Name = "lblSubtitle";
-            lblSubtitle.Size = new Size(570, 25);
-            lblSubtitle.TabIndex = 9;
-            lblSubtitle.Text = "Silakan pilih menu di bawah untuk mengelola sistem";
- 
-            // === LABEL SELAMAT DATANG ===
+            // 
+            // LabelAdmin
+            // 
             LabelAdmin.AutoSize = true;
             LabelAdmin.BackColor = Color.Transparent;
             LabelAdmin.Font = new Font("Segoe UI", 18F, FontStyle.Bold);
             LabelAdmin.ForeColor = Color.FromArgb(34, 112, 63);
             LabelAdmin.Location = new Point(250, 30);
             LabelAdmin.Name = "LabelAdmin";
-            LabelAdmin.Size = new Size(273, 46);
+            LabelAdmin.Size = new Size(242, 41);
             LabelAdmin.TabIndex = 0;
             LabelAdmin.Text = "Selamat Datang";
- 
-            // === PICTUREBOX (LOGO) ===
+            // 
+            // pictureBox1
+            // 
             pictureBox1.Location = new Point(50, 25);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(120, 120);
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
-            pictureBox1.Visible = true;
- 
-            // === TOMBOL MANAGE AKUN ===
+            // 
+            // BtnAkun
+            // 
             BtnAkun.BackColor = Color.FromArgb(34, 112, 63);
             BtnAkun.Cursor = Cursors.Hand;
-            BtnAkun.FlatStyle = FlatStyle.Flat;
             BtnAkun.FlatAppearance.BorderSize = 0;
+            BtnAkun.FlatStyle = FlatStyle.Flat;
             BtnAkun.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             BtnAkun.ForeColor = Color.White;
             BtnAkun.Location = new Point(250, 130);
@@ -107,12 +77,13 @@ namespace ProjekWinform
             BtnAkun.Text = "Manage Akun\n(User Login)";
             BtnAkun.UseVisualStyleBackColor = false;
             BtnAkun.Click += BtnAkun_Click;
- 
-            // === TOMBOL MANAGE DATA ===
+            // 
+            // BtnData
+            // 
             BtnData.BackColor = Color.FromArgb(34, 112, 63);
             BtnData.Cursor = Cursors.Hand;
-            BtnData.FlatStyle = FlatStyle.Flat;
             BtnData.FlatAppearance.BorderSize = 0;
+            BtnData.FlatStyle = FlatStyle.Flat;
             BtnData.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             BtnData.ForeColor = Color.White;
             BtnData.Location = new Point(550, 130);
@@ -122,12 +93,13 @@ namespace ProjekWinform
             BtnData.Text = "Manage Data\n(Profil Karyawan)";
             BtnData.UseVisualStyleBackColor = false;
             BtnData.Click += BtnData_Click;
- 
-            // === TOMBOL KELOLA PRODUK ===
+            // 
+            // BtnKelola
+            // 
             BtnKelola.BackColor = Color.FromArgb(34, 112, 63);
             BtnKelola.Cursor = Cursors.Hand;
-            BtnKelola.FlatStyle = FlatStyle.Flat;
             BtnKelola.FlatAppearance.BorderSize = 0;
+            BtnKelola.FlatStyle = FlatStyle.Flat;
             BtnKelola.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             BtnKelola.ForeColor = Color.White;
             BtnKelola.Location = new Point(250, 310);
@@ -137,12 +109,13 @@ namespace ProjekWinform
             BtnKelola.Text = "Kelola Produk\n(Stok & Restok)";
             BtnKelola.UseVisualStyleBackColor = false;
             BtnKelola.Click += BtnKelola_Click;
- 
-            // === TOMBOL RIWAYAT KEUANGAN ===
+            // 
+            // BtnRiwayat
+            // 
             BtnRiwayat.BackColor = Color.FromArgb(34, 112, 63);
             BtnRiwayat.Cursor = Cursors.Hand;
-            BtnRiwayat.FlatStyle = FlatStyle.Flat;
             BtnRiwayat.FlatAppearance.BorderSize = 0;
+            BtnRiwayat.FlatStyle = FlatStyle.Flat;
             BtnRiwayat.Font = new Font("Segoe UI", 13F, FontStyle.Bold);
             BtnRiwayat.ForeColor = Color.White;
             BtnRiwayat.Location = new Point(550, 310);
@@ -152,12 +125,13 @@ namespace ProjekWinform
             BtnRiwayat.Text = "Riwayat Keuangan\n(Transaksi & Restok)";
             BtnRiwayat.UseVisualStyleBackColor = false;
             BtnRiwayat.Click += BtnRiwayat_Click;
- 
-            // === TOMBOL EXIT ===
+            // 
+            // BtnExit
+            // 
             BtnExit.BackColor = Color.FromArgb(220, 53, 69);
             BtnExit.Cursor = Cursors.Hand;
-            BtnExit.FlatStyle = FlatStyle.Flat;
             BtnExit.FlatAppearance.BorderSize = 0;
+            BtnExit.FlatStyle = FlatStyle.Flat;
             BtnExit.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
             BtnExit.ForeColor = Color.White;
             BtnExit.Location = new Point(20, 450);
@@ -167,9 +141,43 @@ namespace ProjekWinform
             BtnExit.Text = "Keluar Aplikasi";
             BtnExit.UseVisualStyleBackColor = false;
             BtnExit.Click += BtnExit_Click;
- 
-            // === FORM ADMIN CONFIGURATION ===
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            // 
+            // panelSidebar
+            // 
+            panelSidebar.BackColor = Color.FromArgb(34, 112, 63);
+            panelSidebar.Controls.Add(pictureBox1);
+            panelSidebar.Controls.Add(lblShopName);
+            panelSidebar.Controls.Add(BtnExit);
+            panelSidebar.Location = new Point(0, 0);
+            panelSidebar.Name = "panelSidebar";
+            panelSidebar.Size = new Size(220, 520);
+            panelSidebar.TabIndex = 7;
+            // 
+            // lblShopName
+            // 
+            lblShopName.BackColor = Color.Transparent;
+            lblShopName.Font = new Font("Segoe UI", 14F, FontStyle.Bold);
+            lblShopName.ForeColor = Color.White;
+            lblShopName.Location = new Point(10, 165);
+            lblShopName.Name = "lblShopName";
+            lblShopName.Size = new Size(200, 35);
+            lblShopName.TabIndex = 8;
+            lblShopName.Text = "Toko Pertanian";
+            lblShopName.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // lblSubtitle
+            // 
+            lblSubtitle.BackColor = Color.Transparent;
+            lblSubtitle.Font = new Font("Segoe UI", 10F);
+            lblSubtitle.ForeColor = Color.FromArgb(80, 100, 85);
+            lblSubtitle.Location = new Point(250, 75);
+            lblSubtitle.Name = "lblSubtitle";
+            lblSubtitle.Size = new Size(570, 25);
+            lblSubtitle.TabIndex = 9;
+            lblSubtitle.Text = "Silakan pilih menu di bawah untuk mengelola sistem";
+            // 
+            // FormAdmin
+            // 
             AutoScaleMode = AutoScaleMode.None;
             BackColor = Color.FromArgb(244, 248, 244);
             ClientSize = new Size(850, 520);
@@ -187,8 +195,8 @@ namespace ProjekWinform
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Menu Utama Admin - Toko Alat Pertanian";
             Load += FormAdmin_Load;
-            panelSidebar.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            panelSidebar.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }

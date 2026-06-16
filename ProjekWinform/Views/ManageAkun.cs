@@ -29,6 +29,23 @@ namespace ProjekWinform
             List<Akun> listAkun = controller.Read();
             DgUser.DataSource = null;
             DgUser.DataSource = listAkun;
+
+            if (DgUser.Columns.Count > 0)
+            {
+                DgUser.Columns["id_akun"].HeaderText = "ID Akun";
+                DgUser.Columns["username"].HeaderText = "Username";
+                DgUser.Columns["password_akun"].HeaderText = "Password";
+                DgUser.Columns["email"].HeaderText = "Email";
+                DgUser.Columns["nama_role"].HeaderText = "Role";
+                DgUser.Columns["id_role"].Visible = false;
+
+
+                DgUser.Columns["id_akun"].DisplayIndex = 0;
+                DgUser.Columns["username"].DisplayIndex = 1;
+                DgUser.Columns["email"].DisplayIndex = 2;
+                DgUser.Columns["password_akun"].DisplayIndex = 3;
+                DgUser.Columns["nama_role"].DisplayIndex = 4;
+            }
         }
 
         private void btnTambah_Click(object sender, EventArgs e)

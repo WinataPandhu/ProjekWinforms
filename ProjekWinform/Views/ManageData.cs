@@ -29,6 +29,21 @@ namespace ProjekWinform
             List<User> listUser = controller.Read();
             DgUser.DataSource = null;
             DgUser.DataSource = listUser;
+
+            if (DgUser.Columns.Count > 0)
+            {
+                DgUser.Columns["id_user"].HeaderText = "ID User";
+                DgUser.Columns["nama_lengkap"].HeaderText = "Nama Lengkap";
+                DgUser.Columns["no_handphone"].HeaderText = "No HP";
+                DgUser.Columns["alamat"].HeaderText = "Alamat";
+                DgUser.Columns["status"].HeaderText = "Status";
+
+                if (DgUser.Columns["id_akun"] != null)
+                {
+                    DgUser.Columns["id_akun"].HeaderText = "ID Akun";
+                    DgUser.Columns["id_akun"].Visible = false;
+                }
+            }
         }
 
 

@@ -53,7 +53,7 @@ namespace ProjekWinform
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(12, 12);
+            pictureBox1.Location = new Point(27, 12);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(143, 91);
             pictureBox1.TabIndex = 1;
