@@ -113,10 +113,4 @@ namespace ProjekWinform
         private void cmbRole_SelectedIndexChanged(object sender, EventArgs e) { }
     }
 
-    public class RoleItem
-    {
-        public int Id { get; set; }
-        public string Nama { get; set; }
-        public override string ToString() => Nama;
-    }
 }

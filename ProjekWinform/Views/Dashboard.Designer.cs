@@ -33,10 +33,10 @@
             DgUser = new DataGridView();
             btnTambah = new Button();
             btnEdit = new Button();
-            label1 = new Label();
             BtnKembali = new Button();
             btnLihat = new Button();
             panelSidebar = new Panel();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)DgUser).BeginInit();
             panelSidebar.SuspendLayout();
             SuspendLayout();
@@ -70,14 +70,14 @@
             DgUser.DefaultCellStyle = dataGridViewCellStyle2;
             DgUser.EnableHeadersVisualStyles = false;
             DgUser.GridColor = Color.FromArgb(240, 240, 245);
-            DgUser.Location = new Point(250, 30);
+            DgUser.Location = new Point(250, 25);
             DgUser.Name = "DgUser";
             DgUser.ReadOnly = true;
             DgUser.RowHeadersVisible = false;
             DgUser.RowHeadersWidth = 51;
             DgUser.RowTemplate.Height = 35;
             DgUser.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            DgUser.Size = new Size(575, 440);
+            DgUser.Size = new Size(575, 445);
             DgUser.TabIndex = 5;
             DgUser.CellContentClick += DgUser_CellContentClick;
             // 
@@ -121,17 +121,6 @@
             btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label1.ForeColor = Color.White;
-            label1.Location = new Point(24, 30);
-            label1.Name = "label1";
-            label1.Size = new Size(112, 37);
-            label1.TabIndex = 0;
-            label1.Text = "ADMIN";
-            // 
             // BtnKembali
             // 
             BtnKembali.BackColor = Color.FromArgb(215, 60, 60);
@@ -171,7 +160,7 @@
             // panelSidebar
             // 
             panelSidebar.BackColor = Color.FromArgb(45, 45, 110);
-            panelSidebar.Controls.Add(label1);
+            panelSidebar.Controls.Add(label2);
             panelSidebar.Controls.Add(btnTambah);
             panelSidebar.Controls.Add(btnEdit);
             panelSidebar.Controls.Add(btnLihat);
@@ -181,6 +170,17 @@
             panelSidebar.Name = "panelSidebar";
             panelSidebar.Size = new Size(220, 500);
             panelSidebar.TabIndex = 0;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(0, 25);
+            label2.Name = "label2";
+            label2.Size = new Size(220, 37);
+            label2.TabIndex = 5;
+            label2.Text = "MANAGE AKUN";
             // 
             // Dashboard
             // 
@@ -211,5 +211,6 @@
         private Button BtnKembali;
         private Button btnLihat;
         private Panel panelSidebar;
+        private Label label2;
     }
 }

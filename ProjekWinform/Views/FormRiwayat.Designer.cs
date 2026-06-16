@@ -34,16 +34,18 @@
             btnExit = new Button();
             txtCari = new TextBox();
             btnCari = new Button();
+            label2 = new Label();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)DgRiwayat).BeginInit();
             SuspendLayout();
             // 
             // DgRiwayat
             // 
             DgRiwayat.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgRiwayat.Location = new Point(2, 47);
+            DgRiwayat.Location = new Point(180, 47);
             DgRiwayat.Name = "DgRiwayat";
             DgRiwayat.RowHeadersWidth = 51;
-            DgRiwayat.Size = new Size(798, 265);
+            DgRiwayat.Size = new Size(620, 391);
             DgRiwayat.TabIndex = 0;
             // 
             // btnRiwayatRestok
@@ -51,9 +53,9 @@
             btnRiwayatRestok.BackColor = Color.MidnightBlue;
             btnRiwayatRestok.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRiwayatRestok.ForeColor = SystemColors.ButtonHighlight;
-            btnRiwayatRestok.Location = new Point(137, 318);
+            btnRiwayatRestok.Location = new Point(-1, 112);
             btnRiwayatRestok.Name = "btnRiwayatRestok";
-            btnRiwayatRestok.Size = new Size(190, 132);
+            btnRiwayatRestok.Size = new Size(179, 132);
             btnRiwayatRestok.TabIndex = 1;
             btnRiwayatRestok.Text = "Riwayat Restok";
             btnRiwayatRestok.UseVisualStyleBackColor = false;
@@ -64,9 +66,9 @@
             btnRiwayatTransaksi.BackColor = Color.Green;
             btnRiwayatTransaksi.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnRiwayatTransaksi.ForeColor = SystemColors.ButtonHighlight;
-            btnRiwayatTransaksi.Location = new Point(431, 318);
+            btnRiwayatTransaksi.Location = new Point(-1, 250);
             btnRiwayatTransaksi.Name = "btnRiwayatTransaksi";
-            btnRiwayatTransaksi.Size = new Size(190, 132);
+            btnRiwayatTransaksi.Size = new Size(179, 132);
             btnRiwayatTransaksi.TabIndex = 2;
             btnRiwayatTransaksi.Text = "Riwayat Transaksi";
             btnRiwayatTransaksi.UseVisualStyleBackColor = false;
@@ -77,7 +79,7 @@
             btnExit.BackColor = Color.Red;
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = SystemColors.ButtonHighlight;
-            btnExit.Location = new Point(669, 388);
+            btnExit.Location = new Point(12, 388);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(119, 50);
             btnExit.TabIndex = 3;
@@ -87,9 +89,9 @@
             // 
             // txtCari
             // 
-            txtCari.Location = new Point(12, 14);
+            txtCari.Location = new Point(180, 14);
             txtCari.Name = "txtCari";
-            txtCari.Size = new Size(651, 27);
+            txtCari.Size = new Size(483, 27);
             txtCari.TabIndex = 4;
             // 
             // btnCari
@@ -105,11 +107,35 @@
             btnCari.UseVisualStyleBackColor = false;
             btnCari.Click += btnCari_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(12, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(111, 31);
+            label2.TabIndex = 6;
+            label2.Text = "RIWAYAT";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(12, 47);
+            label1.Name = "label1";
+            label1.Size = new Size(141, 31);
+            label1.TabIndex = 7;
+            label1.Text = "KEUANGAN";
+            // 
             // FormRiwayat
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(label2);
             Controls.Add(btnCari);
             Controls.Add(txtCari);
             Controls.Add(btnExit);
@@ -132,5 +158,7 @@
         private Button btnExit;
         private TextBox txtCari;
         private Button btnCari;
+        private Label label2;
+        private Label label1;
     }
 }

@@ -22,7 +22,16 @@ namespace ProjekWinform
             AlatData = alat;
             txtNamaAlat.Text = alat.nama_alat;
             txtHarga.Text = alat.harga.ToString();
-            cmbStatus.Text = alat.status_alat;
+
+            if (alat.status_alat == "For Sale")
+            {
+                cmbStatus.SelectedIndex = 0;
+            }
+            else if (alat.status_alat == "Not Sale")
+            {
+                cmbStatus.SelectedIndex = 1;
+            }
+
             cmbJenis.SelectedIndex = alat.id_jenis - 1;
         }
 
@@ -30,7 +39,7 @@ namespace ProjekWinform
         {
             cmbStatus.Items.Clear();
             cmbStatus.Items.Add("For Sale");
-            cmbStatus.Items.Add("Not For Sale");
+            cmbStatus.Items.Add("Not Sale");
         }
 
         private void IsiComboJenis()

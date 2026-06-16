@@ -32,6 +32,18 @@ namespace ProjekWinform
 
             if (DgProduk.Columns["id_jenis"] != null)
                 DgProduk.Columns["id_jenis"].Visible = false;
+            if (DgProduk.Columns["id_alat"] != null)
+                DgProduk.Columns["id_alat"].Visible = false;
+            if (DgProduk.Columns["nama_alat"] != null)
+                DgProduk.Columns["nama_alat"].HeaderText = "Nama Alat";
+            if (DgProduk.Columns["harga"] != null)
+                DgProduk.Columns["harga"].HeaderText = "Harga";
+            if (DgProduk.Columns["stok"] != null)
+                DgProduk.Columns["stok"].HeaderText = "Stok";
+            if (DgProduk.Columns["status_alat"] != null)
+                DgProduk.Columns["status_alat"].HeaderText = "Status";
+            if (DgProduk.Columns["nama_jenis"] != null)
+                DgProduk.Columns["nama_jenis"].HeaderText = "Jenis";
         }
 
         private void BtnTambah_Click(object sender, EventArgs e)

@@ -233,7 +233,7 @@
             // btnSimpanPesanan
             // 
             btnSimpanPesanan.BackColor = Color.FromArgb(0, 192, 0);
-            btnSimpanPesanan.Location = new Point(644, 339);
+            btnSimpanPesanan.Location = new Point(644, 329);
             btnSimpanPesanan.Name = "btnSimpanPesanan";
             btnSimpanPesanan.Size = new Size(144, 47);
             btnSimpanPesanan.TabIndex = 31;
@@ -244,7 +244,7 @@
             // btnExit
             // 
             btnExit.BackColor = Color.Red;
-            btnExit.Location = new Point(644, 403);
+            btnExit.Location = new Point(644, 391);
             btnExit.Name = "btnExit";
             btnExit.Size = new Size(144, 47);
             btnExit.TabIndex = 32;
@@ -283,9 +283,9 @@
             // 
             // btnHapus
             // 
-            btnHapus.Location = new Point(644, 277);
+            btnHapus.Location = new Point(317, 170);
             btnHapus.Name = "btnHapus";
-            btnHapus.Size = new Size(144, 40);
+            btnHapus.Size = new Size(92, 30);
             btnHapus.TabIndex = 36;
             btnHapus.Text = "Hapus";
             btnHapus.UseVisualStyleBackColor = true;

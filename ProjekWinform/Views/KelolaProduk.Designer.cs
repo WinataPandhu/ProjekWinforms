@@ -42,7 +42,7 @@
             BtnTambah.BackColor = Color.Green;
             BtnTambah.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnTambah.ForeColor = SystemColors.ButtonHighlight;
-            BtnTambah.Location = new Point(598, 62);
+            BtnTambah.Location = new Point(-1, 79);
             BtnTambah.Name = "BtnTambah";
             BtnTambah.Size = new Size(200, 54);
             BtnTambah.TabIndex = 0;
@@ -55,7 +55,7 @@
             BtnRestok.BackColor = Color.Green;
             BtnRestok.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnRestok.ForeColor = SystemColors.ButtonHighlight;
-            BtnRestok.Location = new Point(598, 181);
+            BtnRestok.Location = new Point(-1, 199);
             BtnRestok.Name = "BtnRestok";
             BtnRestok.Size = new Size(200, 54);
             BtnRestok.TabIndex = 1;
@@ -68,7 +68,7 @@
             BtnExit.BackColor = Color.Red;
             BtnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnExit.ForeColor = SystemColors.ButtonHighlight;
-            BtnExit.Location = new Point(672, 398);
+            BtnExit.Location = new Point(12, 398);
             BtnExit.Name = "BtnExit";
             BtnExit.Size = new Size(116, 40);
             BtnExit.TabIndex = 3;
@@ -79,7 +79,7 @@
             // DgProduk
             // 
             DgProduk.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DgProduk.Location = new Point(-1, 2);
+            DgProduk.Location = new Point(205, 9);
             DgProduk.Name = "DgProduk";
             DgProduk.RowHeadersWidth = 51;
             DgProduk.Size = new Size(593, 445);
@@ -91,9 +91,9 @@
             BtnEdit.BackColor = Color.FromArgb(0, 192, 0);
             BtnEdit.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             BtnEdit.ForeColor = SystemColors.ButtonHighlight;
-            BtnEdit.Location = new Point(632, 122);
+            BtnEdit.Location = new Point(-1, 139);
             BtnEdit.Name = "BtnEdit";
-            BtnEdit.Size = new Size(166, 54);
+            BtnEdit.Size = new Size(200, 54);
             BtnEdit.TabIndex = 5;
             BtnEdit.Text = "Edit Produk";
             BtnEdit.UseVisualStyleBackColor = false;
@@ -102,12 +102,12 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(713, 9);
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(-1, 22);
             label1.Name = "label1";
-            label1.Size = new Size(85, 41);
+            label1.Size = new Size(199, 31);
             label1.TabIndex = 6;
-            label1.Text = "Fitur";
+            label1.Text = "KELOLA PRODUK";
             // 
             // KelolaProduk
             // 

@@ -32,14 +32,66 @@ namespace ProjekWinform
             List<HistoriRestok> listRestok = controllerAlat.ReadRestok();
             DgRiwayat.DataSource = null;
             DgRiwayat.DataSource = listRestok;
+
+            AturHeaderRestok();
         }
 
         private void btnRiwayatTransaksi_Click(object sender, EventArgs e)
         {
             modeAktif = "transaksi";
-            DataTable dtTransaksi = controllerTransaksi.ReadTransaksi();
+
+            List<Transaksi> listTransaksi = controllerTransaksi.ReadTransaksi();
+
             DgRiwayat.DataSource = null;
-            DgRiwayat.DataSource = dtTransaksi;
+            DgRiwayat.DataSource = listTransaksi;
+
+            AturHeaderTransaksi();
+        }
+
+        private void btnCari_Click(object sender, EventArgs e)
+        {
+            if (modeAktif == "transaksi")
+            {
+                List<Transaksi> listTransaksi = controllerTransaksi.ReadTransaksiByKeyword(txtCari.Text);
+
+                DgRiwayat.DataSource = null;
+                DgRiwayat.DataSource = listTransaksi;
+
+                AturHeaderTransaksi();
+            }
+
+            else if (modeAktif == "restok")
+            {
+                List<HistoriRestok> listRestok = controllerAlat.ReadRestokByKeyword(txtCari.Text);
+
+                DgRiwayat.DataSource = null;
+                DgRiwayat.DataSource = listRestok;
+
+                AturHeaderRestok(); 
+            }
+        }
+
+        private void AturHeaderRestok()
+        {
+            if (DgRiwayat.Columns["id_histori"] != null) DgRiwayat.Columns["id_histori"]!.Visible = false;
+            if (DgRiwayat.Columns["harga_beli"] != null) DgRiwayat.Columns["harga_beli"]!.HeaderText = "Harga Beli";
+            if (DgRiwayat.Columns["stok_dibeli"] != null) DgRiwayat.Columns["stok_dibeli"]!.HeaderText = "Jumlah";
+            if (DgRiwayat.Columns["tanggal_pembelian"] != null) DgRiwayat.Columns["tanggal_pembelian"]!.HeaderText = "Tanggal Restok";
+            if (DgRiwayat.Columns["nama_lengkap"] != null) DgRiwayat.Columns["nama_lengkap"]!.HeaderText = "Penanggung Jawab";
+            if (DgRiwayat.Columns["nama_alat"] != null) DgRiwayat.Columns["nama_alat"]!.HeaderText = "Nama Barang";
+        }
+        private void AturHeaderTransaksi()
+        {
+            if (DgRiwayat.Columns["id_transaksi"] != null) DgRiwayat.Columns["id_transaksi"]!.Visible = false;
+            if (DgRiwayat.Columns["tanggal_transaksi"] != null) DgRiwayat.Columns["tanggal_transaksi"]!.HeaderText = "Tanggal";
+            if (DgRiwayat.Columns["nama_pelanggan"] != null) DgRiwayat.Columns["nama_pelanggan"]!.HeaderText = "Nama Pelanggan";
+            if (DgRiwayat.Columns["kasir"] != null) DgRiwayat.Columns["kasir"]!.HeaderText = "Kasir";
+            if (DgRiwayat.Columns["nama_alat"] != null) DgRiwayat.Columns["nama_alat"]!.HeaderText = "Nama Barang";
+            if (DgRiwayat.Columns["quantity"] != null) DgRiwayat.Columns["quantity"]!.HeaderText = "Qty";
+            if (DgRiwayat.Columns["harga_jual"] != null) DgRiwayat.Columns["harga_jual"]!.Visible = false;
+            if (DgRiwayat.Columns["subtotal"] != null) DgRiwayat.Columns["subtotal"]!.HeaderText = "Subtotal";
+            if (DgRiwayat.Columns["metode_bayar"] != null) DgRiwayat.Columns["metode_bayar"]!.HeaderText = "Metode Pembayaran";
+            if (DgRiwayat.Columns["metode_ambil"] != null) DgRiwayat.Columns["metode_ambil"]!.HeaderText = "Metode Pengambilan";
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -49,31 +101,8 @@ namespace ProjekWinform
             this.Hide();
         }
 
-        private void btnCari_Click(object sender, EventArgs e)
-        {
-            if (modeAktif == "")
-            {
-                MessageBox.Show("Pilih dulu Riwayat Restok atau Riwayat Transaksi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (modeAktif == "transaksi")
-            {
-                DataTable dtTransaksi = controllerTransaksi.ReadTransaksiByKeyword(txtCari.Text);
-                DgRiwayat.DataSource = null;
-                DgRiwayat.DataSource = dtTransaksi;
-            }
-            else if (modeAktif == "restok")
-            {
-                List<HistoriRestok> listRestok = controllerAlat.ReadRestokByKeyword(txtCari.Text);
-                DgRiwayat.DataSource = null;
-                DgRiwayat.DataSource = listRestok;
-            }
-        }
-
         private void FormRiwayat_Load(object sender, EventArgs e)
         {
-
         }
     }
 }
