@@ -12,6 +12,8 @@ namespace ProjekWinform
 {
     public partial class FormRiwayatKurir : Form
     {
+        private string savedUsername;
+
         c_pengiriman controller = new c_pengiriman();
 
         public FormRiwayatKurir()
@@ -31,7 +33,7 @@ namespace ProjekWinform
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FormKurir formKurir = new FormKurir();
+            FormKurir formKurir = new FormKurir(savedUsername);
             formKurir.Show();
             this.Hide();
         }

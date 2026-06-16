@@ -32,6 +32,7 @@
             dgRiwayatPengirim = new DataGridView();
             dtpCari = new DateTimePicker();
             btnCari = new Button();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgRiwayatPengirim).BeginInit();
             SuspendLayout();
             // 
@@ -51,10 +52,10 @@
             // dgRiwayatPengirim
             // 
             dgRiwayatPengirim.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgRiwayatPengirim.Location = new Point(25, 31);
+            dgRiwayatPengirim.Location = new Point(25, 66);
             dgRiwayatPengirim.Name = "dgRiwayatPengirim";
             dgRiwayatPengirim.RowHeadersWidth = 51;
-            dgRiwayatPengirim.Size = new Size(743, 331);
+            dgRiwayatPengirim.Size = new Size(743, 296);
             dgRiwayatPengirim.TabIndex = 1;
             // 
             // dtpCari
@@ -76,11 +77,23 @@
             btnCari.UseVisualStyleBackColor = false;
             btnCari.Click += btnCari_Click;
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(25, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(314, 37);
+            label2.TabIndex = 6;
+            label2.Text = "RIWAYAT PENGIRIMAN";
+            // 
             // FormRiwayatKurir
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(btnCari);
             Controls.Add(dtpCari);
             Controls.Add(dgRiwayatPengirim);
@@ -89,6 +102,7 @@
             Text = "FormRiwayatKurir";
             ((System.ComponentModel.ISupportInitialize)dgRiwayatPengirim).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -97,5 +111,6 @@
         private DataGridView dgRiwayatPengirim;
         private DateTimePicker dtpCari;
         private Button btnCari;
+        private Label label2;
     }
 }

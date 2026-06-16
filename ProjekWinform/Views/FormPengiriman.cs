@@ -7,40 +7,33 @@ namespace ProjekWinform
 {
     public partial class FormPengiriman : Form
     {
+        private int id_pengirim;
+        private string savedUsername;
+
         c_pengiriman controller = new c_pengiriman();
 
-        public FormPengiriman()
+        public FormPengiriman(int id, string nama, string noHp, string alamat, string status, string username)
         {
             InitializeComponent();
             this.StartPosition = FormStartPosition.CenterScreen;
-            dgAntar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgAntar.ReadOnly = true;
-            LoadData();
             ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
+
+            this.id_pengirim = id;
+            this.savedUsername = username;
+
+            lblNama.Text = "Nama Pelanggan: " + nama;
+            lblNoHp.Text = "No HP: " + noHp;
+            lblAlamat.Text = "Alamat Tujuan: " + alamat;
+            lblStatus.Text = "Status: " + status;
         }
 
-        private void LoadData(string keyword = "")
-        {
-            dgAntar.DataSource = controller.ReadPengirimanByNama(keyword);
-        }
 
-        private void btnCari_Click(object sender, EventArgs e)
-        {
-            LoadData(textCari.Text);
-        }
 
         private void btnStatus_Click(object sender, EventArgs e)
         {
-            if (dgAntar.CurrentRow == null)
-            {
-                MessageBox.Show("Pilih data pengiriman terlebih dahulu!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            string statusSekarang = lblStatus.Text;
 
-            int id_pengirim = Convert.ToInt32(dgAntar.CurrentRow.Cells["id_pengirim"].Value);
-            string statusSekarang = dgAntar.CurrentRow.Cells["status_pengiriman"].Value.ToString();
-
-            if (statusSekarang == "Sudah Dikirim")
+            if (statusSekarang.Contains("Sudah Dikirim"))
             {
                 MessageBox.Show("Status Sudah Dikirim!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -56,13 +49,15 @@ namespace ProjekWinform
             {
                 string result = controller.UbahStatus(id_pengirim);
                 MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadData(textCari.Text);
+
+                // Update text label status di layar biar langsung berubah
+                lblStatus.Text = "Status: Sudah Dikirim";
             }
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            FormKurir kurir = new FormKurir();
+            FormKurir kurir = new FormKurir(savedUsername);
             kurir.Show();
             this.Hide();
         }

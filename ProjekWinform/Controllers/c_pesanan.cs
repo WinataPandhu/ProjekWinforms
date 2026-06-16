@@ -6,7 +6,6 @@ namespace ProjekWinform.Controllers
 {
     public class c_pesanan
     {
-        // Instansiasi Context di dalam Controller
         private PesananContext context = new PesananContext();
 
         public List<AlatPertanian> LoadBarang()

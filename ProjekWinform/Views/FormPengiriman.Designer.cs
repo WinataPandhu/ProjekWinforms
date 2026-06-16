@@ -30,10 +30,11 @@
         {
             btnExit = new Button();
             btnStatus = new Button();
-            dgAntar = new DataGridView();
-            btnCari = new Button();
-            textCari = new TextBox();
-            ((System.ComponentModel.ISupportInitialize)dgAntar).BeginInit();
+            label2 = new Label();
+            lblNama = new Label();
+            lblNoHp = new Label();
+            lblAlamat = new Label();
+            lblStatus = new Label();
             SuspendLayout();
             // 
             // btnExit
@@ -41,9 +42,9 @@
             btnExit.BackColor = Color.FromArgb(192, 0, 0);
             btnExit.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnExit.ForeColor = SystemColors.ButtonHighlight;
-            btnExit.Location = new Point(651, 387);
+            btnExit.Location = new Point(28, 390);
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(128, 51);
+            btnExit.Size = new Size(96, 35);
             btnExit.TabIndex = 0;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = false;
@@ -54,56 +55,79 @@
             btnStatus.BackColor = Color.FromArgb(192, 192, 0);
             btnStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnStatus.ForeColor = Color.White;
-            btnStatus.Location = new Point(314, 376);
+            btnStatus.Location = new Point(1, 114);
             btnStatus.Name = "btnStatus";
-            btnStatus.Size = new Size(169, 62);
+            btnStatus.Size = new Size(212, 73);
             btnStatus.TabIndex = 1;
             btnStatus.Text = "Ubah Status";
             btnStatus.UseVisualStyleBackColor = false;
             btnStatus.Click += btnStatus_Click;
             // 
-            // dgAntar
+            // label2
             // 
-            dgAntar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgAntar.Location = new Point(12, 62);
-            dgAntar.Name = "dgAntar";
-            dgAntar.RowHeadersWidth = 51;
-            dgAntar.Size = new Size(776, 295);
-            dgAntar.TabIndex = 2;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(10, 41);
+            label2.Name = "label2";
+            label2.Size = new Size(203, 31);
+            label2.TabIndex = 6;
+            label2.Text = "ANTAR PESANAN";
             // 
-            // btnCari
+            // lblNama
             // 
-            btnCari.BackColor = Color.FromArgb(0, 192, 0);
-            btnCari.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnCari.ForeColor = Color.White;
-            btnCari.Location = new Point(702, 29);
-            btnCari.Name = "btnCari";
-            btnCari.Size = new Size(77, 32);
-            btnCari.TabIndex = 3;
-            btnCari.Text = "Cari";
-            btnCari.UseVisualStyleBackColor = false;
-            btnCari.Click += btnCari_Click;
+            lblNama.AutoSize = true;
+            lblNama.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNama.Location = new Point(314, 114);
+            lblNama.Name = "lblNama";
+            lblNama.Size = new Size(172, 28);
+            lblNama.TabIndex = 7;
+            lblNama.Text = "Nama Pelanggan";
             // 
-            // textCari
+            // lblNoHp
             // 
-            textCari.Location = new Point(12, 29);
-            textCari.Name = "textCari";
-            textCari.Size = new Size(684, 27);
-            textCari.TabIndex = 4;
+            lblNoHp.AutoSize = true;
+            lblNoHp.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNoHp.Location = new Point(314, 170);
+            lblNoHp.Name = "lblNoHp";
+            lblNoHp.Size = new Size(73, 28);
+            lblNoHp.TabIndex = 8;
+            lblNoHp.Text = "No HP";
+            // 
+            // lblAlamat
+            // 
+            lblAlamat.AutoSize = true;
+            lblAlamat.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAlamat.Location = new Point(314, 232);
+            lblAlamat.Name = "lblAlamat";
+            lblAlamat.Size = new Size(150, 28);
+            lblAlamat.TabIndex = 9;
+            lblAlamat.Text = "Alamat Tujuan";
+            // 
+            // lblStatus
+            // 
+            lblStatus.AutoSize = true;
+            lblStatus.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblStatus.Location = new Point(314, 289);
+            lblStatus.Name = "lblStatus";
+            lblStatus.Size = new Size(71, 28);
+            lblStatus.TabIndex = 10;
+            lblStatus.Text = "Status";
             // 
             // FormPengiriman
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(textCari);
-            Controls.Add(btnCari);
-            Controls.Add(dgAntar);
+            Controls.Add(lblStatus);
+            Controls.Add(lblAlamat);
+            Controls.Add(lblNoHp);
+            Controls.Add(lblNama);
+            Controls.Add(label2);
             Controls.Add(btnStatus);
             Controls.Add(btnExit);
             Name = "FormPengiriman";
             Text = "FormPengiriman";
-            ((System.ComponentModel.ISupportInitialize)dgAntar).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -112,8 +136,10 @@
 
         private Button btnExit;
         private Button btnStatus;
-        private DataGridView dgAntar;
-        private Button btnCari;
-        private TextBox textCari;
+        private Label label2;
+        private Label lblNama;
+        private Label lblNoHp;
+        private Label lblAlamat;
+        private Label lblStatus;
     }
 }
