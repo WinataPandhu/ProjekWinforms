@@ -6,13 +6,13 @@ using System.Windows.Forms;
 
 namespace ProjekWinform
 {
-    public partial class Dashboard : Form
+    public partial class ManageAkun : Form
     {
         private string username;
         private int id_akun;
         c_akun controller = new c_akun();
 
-        public Dashboard(string username, int id_akun)
+        public ManageAkun(string username, int id_akun)
         {
             InitializeComponent();
             this.username = username;

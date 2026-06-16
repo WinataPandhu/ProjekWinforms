@@ -21,14 +21,14 @@ namespace ProjekWinform
 
         private void BtnAkun_Click(object sender, EventArgs e)
         {
-            Dashboard dashboard = new Dashboard(username, id_akun);
+            ManageAkun dashboard = new ManageAkun(username, id_akun);
             dashboard.Show();
             this.Hide();
         }
 
         private void BtnData_Click(object sender, EventArgs e)
         {
-            Dashboard_data dashboard = new Dashboard_data(username, id_akun);
+            ManageData dashboard = new ManageData(username, id_akun);
             dashboard.Show();
             this.Hide();
         }

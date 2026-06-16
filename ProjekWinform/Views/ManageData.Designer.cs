@@ -1,6 +1,6 @@
 ﻿namespace ProjekWinform
 {
-    partial class Dashboard_data
+    partial class ManageData
     {
         /// <summary>
         /// Required designer variable.
