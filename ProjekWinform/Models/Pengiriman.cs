@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ProjekWinform.Models
 {
-    public class Pengiriman
+    public abstract class BasePengiriman
     {
         public int id_pengirim { get; set; }
         public decimal ongkir { get; set; }
@@ -16,5 +16,23 @@ namespace ProjekWinform.Models
         public string nama_pelanggan { get; set; } = string.Empty;
         public string no_hp { get; set; } = string.Empty;
         public string alamat_pelanggan { get; set; } = string.Empty;
+
+        public abstract decimal HitungBiayaKirim();
+    }
+
+    public class Pengiriman : BasePengiriman
+    {
+        public override decimal HitungBiayaKirim()
+        {
+            return ongkir;
+        }
+    }
+
+    public class PengirimanDalamKota : BasePengiriman
+    {
+        public override decimal HitungBiayaKirim()
+        {
+            return 10000;
+        }
     }
 }

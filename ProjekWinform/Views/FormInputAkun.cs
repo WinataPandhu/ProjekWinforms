@@ -50,7 +50,29 @@ namespace ProjekWinform
                 string.IsNullOrWhiteSpace(txtEmail.Text) ||
                 cmbRole.SelectedItem == null)
             {
-                MessageBox.Show("Semua field harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Semua Kolom harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string emailInput = txtEmail.Text.Trim();
+            if (!emailInput.EndsWith("@gmail.com", StringComparison.OrdinalIgnoreCase) || emailInput.Length <= 10)
+            {
+                MessageBox.Show("Email harus menggunakan format @gmail.com yang valid!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            string usernameInput = txtUsername.Text;
+            string passwordInput = txtPassword.Text;
+
+            if (usernameInput.Contains(" "))
+            {
+                MessageBox.Show("Username tidak boleh mengandung spasi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            if (passwordInput.Contains(" "))
+            {
+                MessageBox.Show("Password tidak boleh mengandung spasi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -89,10 +111,18 @@ namespace ProjekWinform
                     c_user userController = new c_user();
                     string result = userController.Create(formUser.UserData);
                     MessageBox.Show(result, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
 
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    akunController.Delete(newIdAkun);
+
+                    MessageBox.Show("Pendaftaran dibatalkan. Akun tidak jadi disimpan.", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    this.Show();
+                }
             }
             else
             {

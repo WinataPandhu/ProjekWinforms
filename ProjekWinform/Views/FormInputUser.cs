@@ -67,6 +67,24 @@ namespace ProjekWinform
                 return;
             }
 
+            string noHp = txtNoHp.Text.Trim();
+            bool isAngka = true;
+
+            foreach (char c in noHp)
+            {
+                if (!char.IsDigit(c))
+                {
+                    isAngka = false;
+                    break;
+                }
+            }
+
+            if (!isAngka || noHp.Length < 8 || noHp.Length > 14)
+            {
+                MessageBox.Show("Nomor HP harus berupa angka dan berjumlah antara 8 hingga 14 digit!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
             if (UserData == null) UserData = new User();
 
             UserData.nama_lengkap = txtNama.Text;
