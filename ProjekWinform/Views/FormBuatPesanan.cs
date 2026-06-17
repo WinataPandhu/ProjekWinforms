@@ -1,7 +1,7 @@
 using ProjekWinform.Controllers;
-using ProjekWinform.Models; // Tambahkan namespace model agar bisa mengenali kelas AlatPertanian dll
+using ProjekWinform.Models;
 using System;
-using System.Collections.Generic; // Untuk List<>
+using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ProjekWinform
@@ -23,7 +23,6 @@ namespace ProjekWinform
 
         private void FormBuatPesanan_Load(object sender, EventArgs e)
         {
-            // 1. Sinkronisasi Data ComboBox (Menggunakan List Objek)
             comboBoxbarang.DataSource = controller.LoadBarang();
             comboBoxbarang.DisplayMember = "nama_alat";
             comboBoxbarang.ValueMember = "id_alat";
@@ -36,10 +35,8 @@ namespace ProjekWinform
             comboBoxBayar.DisplayMember = "nama_metode";
             comboBoxBayar.ValueMember = "id_pembayaran";
 
-            // Muat data Katalog AlatPertanian ke dgList
             LoadKatalog();
 
-            // 2. Inisialisasi dgPesanan (Keranjang Belanja) Tetap Unbound / Manual Kolom
             dgPesanan.Columns.Clear();
             dgPesanan.Columns.Add("id", "ID");
             dgPesanan.Columns.Add("barang", "Barang");
@@ -53,11 +50,9 @@ namespace ProjekWinform
 
         private void LoadKatalog(string keyword = "")
         {
-            // Perubahan Utama: DataSource menerima List<AlatPertanian> dari controller
             List<AlatPertanian> katalog = controller.LoadKatalogBarang(keyword);
             dgList.DataSource = katalog;
 
-            // Atur penataan judul kolom berdasarkan properti Model AlatPertanian
             if (dgList.Columns["id_alat"] != null) dgList.Columns["id_alat"]!.Visible = false;
             if (dgList.Columns["id_jenis"] != null) dgList.Columns["id_jenis"]!.Visible = false;
 
@@ -73,11 +68,22 @@ namespace ProjekWinform
             long total = 0;
             foreach (DataGridViewRow row in dgPesanan.Rows)
             {
-                // Bagian ini sensitif huruf besar-kecil (Case-Sensitive), pastikan nama kolom match dengan saat penambahan .Add("total", ...)
                 if (row.Cells["total"].Value != null)
                     total += Convert.ToInt64(row.Cells["total"].Value);
             }
             txtTotalHarga.Text = total.ToString("N0");
+        }
+
+        private int AmbilStokKatalog(int idAlat)
+        {
+            foreach (DataGridViewRow row in dgList.Rows)
+            {
+                if (row.DataBoundItem is AlatPertanian alat && alat.id_alat == idAlat)
+                {
+                    return alat.stok;
+                }
+            }
+            return 0;
         }
 
         private void buttonTambah_Click(object sender, EventArgs e)
@@ -86,39 +92,60 @@ namespace ProjekWinform
             {
                 if (comboBoxbarang.SelectedValue == null)
                 {
-                    MessageBox.Show("Pilih barang");
+                    MessageBox.Show("Pilih barang", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
                 int idAlat = Convert.ToInt32(comboBoxbarang.SelectedValue);
                 string namaBarang = comboBoxbarang.Text;
-                int jumlah = (int)nudJumlahbeli.Value;
+                int jumlahBeli = (int)nudJumlahbeli.Value;
 
-                if (jumlah <= 0)
+                if (jumlahBeli <= 0)
                 {
-                    MessageBox.Show("Jumlah harus lebih dari 0");
+                    MessageBox.Show("Jumlah harus lebih dari 0", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                decimal harga = controller.GetHargaAlat(idAlat);
-                bool barangSudahAda = false;
+                int stokTersedia = AmbilStokKatalog(idAlat);
+
+                int jumlahSudahAdaDiKeranjang = 0;
+                DataGridViewRow existingRow = null;
 
                 foreach (DataGridViewRow row in dgPesanan.Rows)
                 {
                     if (row.IsNewRow) continue;
-                    // Menggunakan indeks indeks 0 demi keamanan struktural dgPesanan
                     if (row.Cells[0].Value != null && Convert.ToInt32(row.Cells[0].Value) == idAlat)
                     {
-                        int jumlahBaru = Convert.ToInt32(row.Cells[2].Value) + jumlah;
-                        row.Cells[2].Value = jumlahBaru;
-                        row.Cells[4].Value = harga * jumlahBaru;
-                        barangSudahAda = true;
+                        jumlahSudahAdaDiKeranjang = Convert.ToInt32(row.Cells[2].Value);
+                        existingRow = row;
                         break;
                     }
                 }
 
-                if (!barangSudahAda)
-                    dgPesanan.Rows.Add(idAlat, namaBarang, jumlah, harga, harga * jumlah);
+                int totalPermintaan = jumlahSudahAdaDiKeranjang + jumlahBeli;
+
+                if (totalPermintaan > stokTersedia)
+                {
+                    MessageBox.Show(
+                        $"Stok tidak mencukupi!\nSisa stok tersedia: {stokTersedia}\nJumlah di keranjang: {jumlahSudahAdaDiKeranjang}\nPermintaan baru: {jumlahBeli}",
+                        "Peringatan Stok Limit",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                    return;
+                }
+
+                decimal harga = controller.GetHargaAlat(idAlat);
+
+                if (existingRow != null)
+                {
+                    existingRow.Cells[2].Value = totalPermintaan;
+                    existingRow.Cells[4].Value = harga * totalPermintaan;
+                }
+                else
+                {
+                    dgPesanan.Rows.Add(idAlat, namaBarang, jumlahBeli, harga, harga * jumlahBeli);
+                }
 
                 HitungTotalBelanjaan();
                 nudJumlahbeli.Value = 0;
@@ -134,6 +161,12 @@ namespace ProjekWinform
         {
             try
             {
+                if (dgPesanan.Rows.Count == 0 || (dgPesanan.Rows.Count == 1 && dgPesanan.Rows[0].IsNewRow))
+                {
+                    MessageBox.Show("Keranjang belanja masih kosong!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (comboBoxPengambilan.SelectedValue == null || comboBoxBayar.SelectedValue == null)
                 {
                     MessageBox.Show("Metode pengambilan dan pembayaran harus dipilih.");
@@ -159,6 +192,26 @@ namespace ProjekWinform
                     {
                         MessageBox.Show("Untuk pengiriman diantar, Alamat wajib diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         txtAlamat.Focus();
+                        return;
+                    }
+                }
+
+                foreach (DataGridViewRow row in dgPesanan.Rows)
+                {
+                    if (row.IsNewRow) continue;
+                    int idAlat = Convert.ToInt32(row.Cells[0].Value);
+                    int jumlahBeli = Convert.ToInt32(row.Cells[2].Value);
+                    int stokTerbaruDatabase = AmbilStokKatalog(idAlat);
+
+                    if (jumlahBeli > stokTerbaruDatabase)
+                    {
+                        string namaBarang = row.Cells[1].Value.ToString();
+                        MessageBox.Show(
+                            $"Gagal menyimpan! Stok untuk barang '{namaBarang}' tidak mencukupi.\nStok terkini: {stokTerbaruDatabase}",
+                            "Kesalahan Stok",
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error
+                        );
                         return;
                     }
                 }
@@ -208,8 +261,6 @@ namespace ProjekWinform
         {
             if (e.RowIndex >= 0)
             {
-                // Perubahan Esensial: Konversi baris terpilih langsung kembali menjadi objek utuh AlatPertanian!
-                // Ini menghilangkan ketergantungan nama kolom string yang rawan typo.
                 var alatTerpilih = (AlatPertanian)dgList.Rows[e.RowIndex].DataBoundItem;
 
                 if (alatTerpilih != null)
@@ -236,7 +287,6 @@ namespace ProjekWinform
             this.Hide();
         }
 
-        // Event-event kosong bawaan desainer tetap dipertahankan agar tidak memicu error *Missing Event Link* di partial class desainer.
         private void label1_Click(object sender, EventArgs e) { }
         private void label8_Click(object sender, EventArgs e) { }
         private void lblKembalian_Click(object sender, EventArgs e) { }

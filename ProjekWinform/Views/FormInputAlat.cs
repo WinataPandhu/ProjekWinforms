@@ -45,7 +45,7 @@ namespace ProjekWinform
         private void IsiComboJenis()
         {
             cmbJenis.Items.Clear();
-            cmbJenis.Items.Add(new JenisItem { Id = 1, Nama = "Alat Transportasi" });
+            cmbJenis.Items.Add(new JenisItem { Id = 1, Nama = "Alat Berat" });
             cmbJenis.Items.Add(new JenisItem { Id = 2, Nama = "Alat Ringan" });
             cmbJenis.Items.Add(new JenisItem { Id = 3, Nama = "Alat Elektronik" });
             cmbJenis.DisplayMember = "Nama";
@@ -59,7 +59,7 @@ namespace ProjekWinform
                 cmbStatus.SelectedItem == null ||
                 cmbJenis.SelectedItem == null)
             {
-                MessageBox.Show("Semua field harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Semua kolom harus diisi!", "Peringatan", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 

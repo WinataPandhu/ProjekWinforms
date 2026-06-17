@@ -19,9 +19,10 @@ namespace ProjekWinform
             this.id_akun = id_akun;
             this.StartPosition = FormStartPosition.CenterScreen;
             DgUser.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            LoadData();
             DgUser.ReadOnly = true;
             ProjekWinform.Helpers.ThemeHelper.ApplyTheme(this);
+
+            LoadData();
         }
 
         public void LoadData()
@@ -32,16 +33,29 @@ namespace ProjekWinform
 
             if (DgUser.Columns.Count > 0)
             {
+                if (DgUser.Columns["Nama"] != null) DgUser.Columns["Nama"].Visible = false;
+                if (DgUser.Columns["NoHandphone"] != null) DgUser.Columns["NoHandphone"].Visible = false;
+                if (DgUser.Columns["Alamat"] != null) DgUser.Columns["Alamat"].Visible = false;
+
                 DgUser.Columns["id_user"].HeaderText = "ID User";
                 DgUser.Columns["nama_lengkap"].HeaderText = "Nama Lengkap";
                 DgUser.Columns["no_handphone"].HeaderText = "No HP";
                 DgUser.Columns["alamat"].HeaderText = "Alamat";
                 DgUser.Columns["status"].HeaderText = "Status";
-
                 if (DgUser.Columns["id_akun"] != null)
                 {
                     DgUser.Columns["id_akun"].HeaderText = "ID Akun";
-                    DgUser.Columns["id_akun"].Visible = false;
+                    DgUser.Columns["id_akun"].Visible = true;
+                }
+
+                DgUser.Columns["id_user"].DisplayIndex = 0;
+                DgUser.Columns["nama_lengkap"].DisplayIndex = 1;
+                DgUser.Columns["no_handphone"].DisplayIndex = 2;
+                DgUser.Columns["alamat"].DisplayIndex = 3;
+                DgUser.Columns["status"].DisplayIndex = 4;
+                if (DgUser.Columns["id_akun"] != null)
+                {
+                    DgUser.Columns["id_akun"].DisplayIndex = 5;
                 }
             }
         }
